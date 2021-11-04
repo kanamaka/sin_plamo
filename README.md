@@ -31,7 +31,7 @@ sin_plamo
 https://docs.google.com/spreadsheets/d/1ocCWqC1NCj9fH4_3nbVy0vFRo_hGw5s92BP6E9SDcfU/edit#gid=1340242459 (DBなど)
 https://www.figma.com/file/eMMqUxR0oPHyCZFPlHtqxr/Untitled?node-id=0%3A1(ワイヤーフレーム)
 https://drive.google.com/file/d/1kuDAClJzg7--1f_M8pqksFg3W5SJtEpZ/view?usp=sharing(ER図)
-
+https://docs.google.com/spreadsheets/d/1vfMvtTKg-nBUy3BlsAVn4yS3iBWLMr5M06tdzbYKpbE/edit#gid=2133469642(詳細設計図)
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1yTvAj5-Yc_NCvo-P70On4M27Sem_ur-8AbaO8RJu2Sk/edit#gid=0
 ## 開発環境
