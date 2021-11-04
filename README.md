@@ -27,6 +27,10 @@ sin_plamo
 模型好き、なかなか時間が取れない方に
 ### 主な利用シーン
 制作モチベーションを上げるため、技術的に不明なところを質問したい時
+###設計図関連
+https://docs.google.com/spreadsheets/d/1ocCWqC1NCj9fH4_3nbVy0vFRo_hGw5s92BP6E9SDcfU/edit#gid=1340242459 (DBなど)
+https://www.figma.com/file/eMMqUxR0oPHyCZFPlHtqxr/Untitled?node-id=0%3A1(ワイヤーフレーム)
+https://drive.google.com/file/d/1kuDAClJzg7--1f_M8pqksFg3W5SJtEpZ/view?usp=sharing(ER図)
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1yTvAj5-Yc_NCvo-P70On4M27Sem_ur-8AbaO8RJu2Sk/edit#gid=0
