@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tag: 1
+  opus_name: MyString
+  opus_explanation: MyText
+  opus_image_id: MyString
+
+two:
+  tag: 1
+  opus_name: MyString
+  opus_explanation: MyText
+  opus_image_id: MyString

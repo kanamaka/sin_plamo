@@ -1,11 +1,7 @@
-<h2>新規登録</h2>
+<h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.email_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+  <%= render "admin/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -30,4 +26,4 @@
   </div>
 <% end %>
 
-<%= render "customers/shared/links" %>
+<%= render "admin/shared/links" %>
