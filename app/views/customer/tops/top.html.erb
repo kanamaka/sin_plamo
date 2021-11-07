@@ -19,11 +19,14 @@
              人たちに向けたアプリケーションです
             </div>
           </h2>
-          <% link_to 'sin_plamoとは？', 
+          <%= link_to 'sin_plamoとは？', about_path, class: "btn  col-sm-3" %>
+          <%= link_to '簡単登録！', new_customer_registration_path, class: "btn col-sm-3"  %>
         </div>
-      </div>   
-   </table>      
+      </div>
+   </table>
   </div>
  </div>
 </div>
-  
+<footer>
+ <%= render 'layouts/footer' %>
+</footer>
