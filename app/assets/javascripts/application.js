@@ -12,7 +12,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-
 //
 //= require rails-ujs
 //= require activestorage
@@ -21,3 +20,55 @@
 //= require jquery
 //= require moment
 //= require fullcalendar
+
+$(function () {
+    $(document).on('turbolinks:load', function () {
+        if ($('#calendar').length) {
+
+    function Calendar() {
+    return $('#calendar').fullCalendar({
+    });
+    }
+    function clearCalendar() {
+    $('#calendar').html('');
+    }
+
+    $(document).on('turbolinks:load', function () {
+    Calendar();
+    });
+    $(document).on('turbolinks:before-cache', clearCalendar);
+
+
+    $('#calendars').fullCalendar({
+    　height: window.innerHeight - 60, // ①
+      events: '/show.json',
+      titleFormat: 'YYYY年 M月',
+      dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
+      header: {
+      left: '',
+      center: 'title',
+      right: 'today prev,next'
+      },
+      defaultTimedEventDuration: '03:00:00',
+      buttonText: {
+       prev: '前の月',
+       next: '次の月',
+       prevYear: '前年',
+       nextYear: '翌年',
+       today: '今日',
+       month: '月',
+       week: '週',
+       day: '日'
+       },
+      editable: true,
+      timeFormat: "HH:mm",
+      eventColor: '#88cefa',
+      eventTextColor: '#000000',
+      eventRender: function(event, element) {
+      element.css("font-size", "0.8em");
+      element.css("padding", "1px");
+      }
+      });
+    }
+});
+});

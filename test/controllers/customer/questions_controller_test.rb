@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Customer::OpusControllerTest < ActionDispatch::IntegrationTest
+class Customer::QuestionsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
