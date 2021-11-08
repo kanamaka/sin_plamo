@@ -1,12 +1,13 @@
 <header>
  <%= render 'layouts/header' %>
 </header>
-<div class = "container-fluid haikeitop">
+<div class = "container-fluid">
+<div class="haikei">
  <div class = "row">
   <div class = "col-md-2 offset-2 mt-5">
    <table border="2" style="border-collapse: collapse" rules="groups">
     <div class = "col-md-8 mt-5">
-      <divyoutube style="width: 100%; margin-bottom:300px">
+      <div style="width: 100%; margin-bottom:300px">
         <div style="width: 900px; margin:100px auto;">
           <h2 class="tophaikei">
             <div class="tophaikei">
@@ -21,6 +22,7 @@
           </h2>
           <%= link_to 'sin_plamoとは？', about_path, class: "btn  col-sm-3" %>
           <%= link_to '簡単登録！', new_customer_registration_path, class: "btn col-sm-3"  %>
+        </div>
         </div>
       </div>
    </table>

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :customer do
-   resources :opuses
+   resources :opuses,  only: [:new, :create, :index, :show, :destroy]
    resources :calendars
    resources :tags
    resources :questions

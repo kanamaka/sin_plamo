@@ -12,13 +12,24 @@
  *
  *= require_tree .
  *= require_self
- *= require fullcalendar
+ *= require simple_calendar
  */
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
- 
+
+
  .carendar {
   max-width: 220px;
 	 margin: 0 auto;
+ }
+
+ img.size {
+  width: 20%;
+  height: 20%;
+ }
+
+ .haikei {
+  background: linear-gradient(-45deg, rgba(255, 255, 255, .4), rgba(255, 255, 255, .4)) fixed, url(https://2.bp.blogspot.com/-PalZ8Vf4gcA/XvmmEd337UI/AAAAAAAAMn8/_5OsP3iw_JoSog26MCqLATGxBXGfXpEtACLcBGAsYHQ/s1600/160.jpg) fixed;
+  background-size: cover;
  }
