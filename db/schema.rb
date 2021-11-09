@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_08_115421) do
+ActiveRecord::Schema.define(version: 2021_11_09_160103) do
 
   create_table "calendars", force: :cascade do |t|
     t.string "title"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 2021_11_08_115421) do
     t.string "opus_name"
     t.text "opus_explanation"
     t.string "opus_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_id"
+    t.string "customer_id"
+  end
+
+  create_table "opus_images", force: :cascade do |t|
+    t.integer "opus_id"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

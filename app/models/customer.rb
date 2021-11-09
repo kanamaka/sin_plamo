@@ -5,5 +5,5 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image
   has_many :calendar
-  has_many :opus
+  has_many :opu
 end

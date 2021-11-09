@@ -24,12 +24,31 @@
 	 margin: 0 auto;
  }
 
- img.size {
-  width: 20%;
-  height: 20%;
+ .topsize {
+  width: 40%;
+  height: 40%;
  }
 
  .haikei {
   background: linear-gradient(-45deg, rgba(255, 255, 255, .4), rgba(255, 255, 255, .4)) fixed, url(https://2.bp.blogspot.com/-PalZ8Vf4gcA/XvmmEd337UI/AAAAAAAAMn8/_5OsP3iw_JoSog26MCqLATGxBXGfXpEtACLcBGAsYHQ/s1600/160.jpg) fixed;
   background-size: cover;
+ }
+
+ .azure {
+  color: #f0ffff;
+ }
+
+ .table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 50%;
+ }
+
+ .link {
+  fontcolor: #f0ffff;
+ }
+ 
+ .size {
+  width: 40%;
+  height: 40%;
  }

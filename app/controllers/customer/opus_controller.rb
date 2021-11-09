@@ -1,17 +1,22 @@
-class Customer::OpusesController < ApplicationController
+class Customer::OpusController < ApplicationController
  def show
   @opus = Opu.new
  end
- 
+
+ def new
+  @opus = Opu.new
+  @opus.opus_images.build
+ end
+
  def index
   @opus = Opu.all
  end
 
  def create
-  @opus = Opus.new(content_image_params)
+  @opus = Opu.new(opus_params[:id])
   @opus.customer_id = current_customer.id
   @opus.save
-  redirect_to customer_id_path
+  redirect_to opus_path
  end
 
  def search
@@ -23,6 +28,6 @@ class Customer::OpusesController < ApplicationController
   private
 
   def opus_params
-    params.require(:opus).permit(:opus_name, :image, :opus_explanation)
+    params.require(:opu).permit(:opus_name, :image, :opus_explanation, opus_images_images: [])
   end
 end

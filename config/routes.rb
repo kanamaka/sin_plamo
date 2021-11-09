@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :customer do
-   resources :opuses,  only: [:new, :create, :index, :show, :destroy]
+   resources :opus,  only: [:new, :create, :index, :show, :destroy]
    resources :calendars
    resources :tags
    resources :questions
@@ -29,4 +29,5 @@ Rails.application.routes.draw do
   end
   root :to => "customer/tops#top"
   get "/about" => "customer/tops#about"
+  get 'search' => 'posts#search'
 end

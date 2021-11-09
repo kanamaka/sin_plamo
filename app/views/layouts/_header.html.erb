@@ -1,20 +1,20 @@
 <header>
- <nav class="navbar navbar-expand-lg dark bg-dark">
+ <nav class="navbar navbar-expand">
   <div class="container">
-   <a class="navbar-brand" href="/"><%= image_tag 'logo.jpeg', class: "size"%></a>
+   <a class="navbar-brand" href="/"><%= image_tag 'logo.jpeg', class: "topsize"%></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-     <span class="navbar-toggler-icon"></span>
     </button>
- <div class="collapse navbar-collapse" id="navbarNavDropdown">
+ <div class="navbar-collapse" id="navbarNavDropdown">
   <% if customer_signed_in? %>
-   <li><%= link_to 'mypage',customer_path(current_customer.id),class: 'fas fa-users nav-link text-light' %></li>
-   <li><%= link_to 'Calendar',calendars_path ,class: 'fas fa-book-open nav-link text-light'%></li>
-   <li><%= link_to 'Question',questions_path,class: 'fas fa-home nav-link text-light' %></li>
-   <li><%= link_to 'logout',destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
+   <li style="list-style: none;"><%= link_to customer_path(current_customer.id) do %><%= image_tag 'my.jpeg', class: "size"%><% end %></li>
+   <li style="list-style: none;"><%= link_to opus_path do %><%= image_tag 'penguin.jpeg', class: "size"%><% end %></li>
+   <li style="list-style: none;"><%= link_to calendars_path do %><%= image_tag 'calendar.jpeg', class: "size"%><% end %></li>
+   <li style="list-style: none;"><%= link_to questions_path do %><%= image_tag 'question.jpeg', class: "size"%><% end %></li>
+   <li style="list-style: none;"><%= link_to destroy_customer_session_path, method: :delete do%><%= image_tag 'logout.jpeg', class: "size"%><% end %></li>
  <% else %>
-   <li><%= link_to 'Home',root_path,class: 'fas fa-home nav-link text-light' %></li>
-   <li><%= link_to 'About',about_path,class: 'fas fa-link nav-link text-light' %></li>
-   <li><%= link_to 'sign up', new_customer_registration_path,class: 'fas fa-user-plus nav-link text-light' %></li>
-   <li><%= link_to 'login', customer_session_path ,class: 'fas fa-sign-in-alt nav-link text-light'%></li>
+   <li><%= link_to 'Home',root_path,class: 'fas fa-home nav-link text-light text link' %></li>
+   <li><%= link_to 'About',about_path,class: 'fas fa-link nav-link text-light text link' %></li>
+   <li><%= link_to 'sign up', new_customer_registration_path,class: 'fas fa-user-plus nav-link text-light text link' %></li>
+   <li><%= link_to 'login', customer_session_path ,class: 'fas fa-sign-in-alt nav-link text-light text link'%></li>
  <% end %>
 </header>

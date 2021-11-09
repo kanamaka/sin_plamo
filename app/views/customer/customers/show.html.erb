@@ -5,54 +5,27 @@
  <div class='row'>
   <div class='col-md-4'>
    <h2>登録情報<%= attachment_image_tag @customer, :profile_image,fallback: 'logo.jpeg', class: "size"%></h2>
-   <table class='table'>
+   <table>
     <tr>
-     <td style="border:none;">名前</td>
-     <td style="border:none;"><%= @customer.name %></td>
+     <td style="border:none;" class="table">名前</td>
+     <td style="border:none;" class="table"><%= @customer.name %></td>
     </tr>
     <tr>
-     <td style="border:none;">自己紹介</td>
-     <td style="border:none;"><%= @customer.profile %></td>
+     <td style="border:none;" class="table">自己紹介</td>
+     <td style="border:none;" class="table"><%= @customer.profile %></td>
     </tr>
     <tr>
-     <td style="border:none;">フレンド</td>
-     <td style="border:none;">おきば</td>
+     <td style="border:none;" class="table">フレンド</td>
+     <td style="border:none;" class="table">おきば</td>
     </tr>
     <tr>
      <th style="border:none;">
       <%= link_to '会員情報を編集する', edit_customer_path, class: "btn " %><br>
+      <%= link_to '作品を投稿する！', new_opu_path(current_customer.id), class: "btn " %><br>
      </th>
     </tr>
-     <%= form_with model: @customer, local:true do |f| %>
       <table id="customer-table" class="table mt-3">
-        <tr>
-         <td style="border:none;">
-          <%= f.label "作品名" %><br>
-          <%= f.text_area :opus_name %>
-         </td>
-        </tr>
-        <tr>
-         <td style="border:none;">
-          <%= f.label "作品説明" %><br>
-          <%= f.text_area :opus_explanation %>
-         </td>
-        </tr>
-        <tr>
-         <td style="border:none;">
-         </td>
-        </tr>
-        <tr>
-         <td style="border:none;">
-          <%= f.attachment_field :profile_image %>
-         </td>
-        </tr>
-        <tr>
-         <td style="border:none;">
-          <%= f.submit "作品を投稿する！" %>
-         </td>
-        </tr>
-     <% end %>
-   </table>
+      </table>
   </div>
    <div class='col-md-7 offset-md-1'>
     <h2>作品一覧</h2>
