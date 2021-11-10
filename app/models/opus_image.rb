@@ -1,3 +1,3 @@
 class OpusImage < ApplicationRecord
- belomg_to :opu
+ belongs_to :opu
 end

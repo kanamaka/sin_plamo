@@ -4,7 +4,14 @@
 <div class='container px-5 px-sm-0'>
  <div class='row'>
   <div class='col-md-4'>
-   <h2>登録情報<%= attachment_image_tag @customer, :profile_image,fallback: 'logo.jpeg', class: "size"%></h2>
+   <h2 class="plo_name">登録情報</h2>
+   <div>
+    <% if @customer.profile_image_id? %>
+     <%= image_tag @customer.profile_image_id.url, class: "sizen" %>
+    <% else %>
+     <%= image_tag ("logo.jpg"), class: "sizen" %>
+    <% end %>
+   </div>
    <table>
     <tr>
      <td style="border:none;" class="table">名前</td>

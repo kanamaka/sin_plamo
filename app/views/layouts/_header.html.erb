@@ -12,9 +12,9 @@
    <li style="list-style: none;"><%= link_to questions_path do %><%= image_tag 'question.jpeg', class: "size"%><% end %></li>
    <li style="list-style: none;"><%= link_to destroy_customer_session_path, method: :delete do%><%= image_tag 'logout.jpeg', class: "size"%><% end %></li>
  <% else %>
-   <li><%= link_to 'Home',root_path,class: 'fas fa-home nav-link text-light text link' %></li>
-   <li><%= link_to 'About',about_path,class: 'fas fa-link nav-link text-light text link' %></li>
-   <li><%= link_to 'sign up', new_customer_registration_path,class: 'fas fa-user-plus nav-link text-light text link' %></li>
-   <li><%= link_to 'login', customer_session_path ,class: 'fas fa-sign-in-alt nav-link text-light text link'%></li>
+   <li style="list-style: none;"><%= link_to root_path do %><%= image_tag 'home.jpeg', class: "size"%><% end %></li>
+   <li style="list-style: none;"><%= link_to about_path do %><%= image_tag 'about.jpeg', class: "size"%><% end %></li>
+   <li style="list-style: none;"><%= link_to new_customer_registration_path do %><%= image_tag 'sign.jpeg', class: "size"%><% end %></li>
+   <li style="list-style: none;"><%= link_to customer_session_path do %><%= image_tag 'login.jpeg', class: "size"%><% end %></li>
  <% end %>
 </header>
