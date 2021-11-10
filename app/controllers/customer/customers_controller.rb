@@ -3,6 +3,7 @@ class Customer::CustomersController < ApplicationController
   @customer = current_customer
   @customers = Customer.find(params[:id])
   @opus = Opu.new
+  @opera = Opu.all
  end
 
  def index

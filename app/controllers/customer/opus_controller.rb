@@ -1,8 +1,6 @@
 class Customer::OpusController < ApplicationController
  def show
   @opus = Opu.new
-  @opus = Opus.find(params[:id])
-  @opus_tags = @opus_tags
  end
 
  def new
@@ -10,21 +8,14 @@ class Customer::OpusController < ApplicationController
  end
 
  def index
-  @opus = Opu.all
-  @tag_list = Tag.all
-  @opu = current_customer.opu.new
+  @opera = Opu.all
  end
 
  def create
-  @opus = current_customer.opu.new(opus_params[:id])
-  tag_list = params[:opu][:tag].split(nil)
+  @opus = Opu.new(opus_params)
   @opus.customer_id = current_customer.id
-  if @opus.save
-   @opus.save.tag(tag_list)
-   redirect_to opus_path
-  else
-   render :new_opu_pats
-  end
+  @opus.save
+  redirect_to opus_path
  end
 
  def search

@@ -17,15 +17,11 @@
        <tr>
         <th style="border:none;">作品画像</th>
         <th style="border:none;">タイトル</th>
-        <th style="border:none;">作品タグ</th>
       </tr>
       <tr>
-     <% @opus.each do |opu| %>
-       <td style="border:none;"><%= opu.image_id %></td>
-       <td style="border:none;"><%= opu.opus_name %></td>
-     <% @tag_list.each do |list| %>
-      <%= tag.name %>
-     <% end %>
+     <% @opera.each do |opus| %>
+       <td style="border:none;"><%= attachment_image_tag opus, :image, :fill, 10, 10, format: 'jpeg', fallback: "logo.jpg"%></td>
+       <td style="border:none;"><%= opus.opus_name %></td>
       </tr>
      <% end %>
       </tr>

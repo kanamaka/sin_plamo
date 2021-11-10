@@ -44,7 +44,11 @@
     </tr>
     </thead>
     <tbody>
-
+      <% @opera.each do |opus| %>
+       <td style="border:none;"><%= attachment_image_tag opus, :image, :fill, 10, 10, format: 'jpeg', fallback: "logo.jpg"%></td>
+       <td style="border:none;"><%= opus.opus_name %></td>
+      <% end %>
+      </tr>
     </tbody>
    </table>
    </div>

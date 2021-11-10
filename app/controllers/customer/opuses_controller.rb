@@ -1,10 +1,10 @@
 class Customer::OpusesController < ApplicationController
  def show
-  @opus = Opu.new
+  @opus = Opus.new
  end
 
  def index
-  @opus = Opu.all
+  @opera = Opus.all
  end
 
  def create
