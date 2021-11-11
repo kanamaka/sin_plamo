@@ -1,0 +1,69 @@
+<header>
+ <%= render 'layouts/header' %>
+</header>
+ <div class='container px-5 px-sm-0'>
+ <div class='row'>
+  <div class='col-md-4'>
+   <h2 class="plo_name">登録情報</h2>
+   <div>
+    <% if @customer.profile_image_id? %>
+     <%= image_tag @customer.profile_image_id.url, class: "sizen" %>
+    <% else %>
+     <%= image_tag ("logo.jpg"), class: "sizen" %>
+    <% end %>
+   </div>
+   <table>
+    <tr>
+     <td style="border:none;" class="table">名前</td>
+     <td style="border:none;" class="table"><%= @customer.name %></td>
+    </tr>
+    <tr>
+     <td style="border:none;" class="table">自己紹介</td>
+     <td style="border:none;" class="table"><%= @customer.profile %></td>
+    </tr>
+    <tr>
+     <td style="border:none;" class="table">フレンド</td>
+     <td style="border:none;" class="table">おきば</td>
+    </tr>
+    <tr>
+     <th style="border:none;">
+      <%= link_to '会員情報を編集する', edit_customer_path, class: "btn " %><br>
+      <%= link_to '作品を投稿する！', new_opu_path(current_customer.id), class: "btn " %><br>
+     </th>
+    </tr>
+      <table id="customer-table" class="table mt-3">
+      </table>
+  </div>
+   <div class='col-md-7 offset-md-1'>
+    <h2>作品一覧</h2>
+    <table class='table'>
+    <thead>
+     <tr>
+      <td style="border:none;" class="table mt-3">作品画像</td>
+      <td style="border:none;" class="table mt-3">作品名</td>
+    </tr>
+    </thead>
+    <tbody>
+      <% @opera.each do |opus| %>
+      <tr>
+       <td style="border:none;">
+        <%= link_to opu_path(opus.customer_id) do %>
+        <%= attachment_image_tag opus, :image, format: 'jpeg', fallback: "logo.jpg", class: "size"%><% end %>
+       </td>
+       <td style="border:none;"><%= opus.opus_name %></td>
+       <td style="border:none;">
+        <% if @customer.id == current_customer.id %>
+         <%= link_to "修正してやる！", edit_opu_path(@customers), class: "btn btn-success btn-block" %>
+        <% end %>
+       </td>
+      </tr>
+      <% end %>
+      </tr>
+    </tbody>
+   </table>
+   </div>
+ </div>
+</div>
+<footer>
+ <%= render 'layouts/footer' %>
+</footer>

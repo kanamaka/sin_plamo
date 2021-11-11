@@ -21,11 +21,12 @@ Rails.application.routes.draw do
   end
 
   scope module: :customer do
-   resources :opus,  only: [:new, :create, :index, :show, :destroy]
-   resources :calendars
+   resources :opus,  only: [:new, :create, :index, :show, :destroy, :edit]
    resources :tags
    resources :questions
-   resources :customers
+   resources :customers do
+     resources :calendars
+   end
   end
   root :to => "customer/tops#top"
   get "/about" => "customer/tops#about"

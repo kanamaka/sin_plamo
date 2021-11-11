@@ -39,14 +39,19 @@
     <table class='table'>
     <thead>
      <tr>
-      <td style="border:none;">作品画像</td>
-      <td style="border:none;">作品名</td>
+      <td style="border:none;" class="table mt-3">作品画像</td>
+      <td style="border:none;" class="table mt-3">作品名</td>
     </tr>
     </thead>
     <tbody>
       <% @opera.each do |opus| %>
-       <td style="border:none;"><%= attachment_image_tag opus, :image, :fill, 10, 10, format: 'jpeg', fallback: "logo.jpg"%></td>
+      <tr>
+       <td style="border:none;">
+        <%= link_to opu_path(opus.customer_id) do %>
+        <%= attachment_image_tag opus, :image, format: 'jpeg', fallback: "logo.jpg", class: "size"%><% end %>
+       </td>
        <td style="border:none;"><%= opus.opus_name %></td>
+      </tr>
       <% end %>
       </tr>
     </tbody>

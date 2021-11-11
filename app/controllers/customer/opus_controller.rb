@@ -1,6 +1,9 @@
 class Customer::OpusController < ApplicationController
  def show
   @opus = Opu.new
+  @customer = current_customer
+  @customers = Customer.find(params[:id])
+  @opera = Opu.all
  end
 
  def new
@@ -9,6 +12,9 @@ class Customer::OpusController < ApplicationController
 
  def index
   @opera = Opu.all
+  @opus = Opu.find_by(params[:id])
+  @customer = current_customer
+  @customers = Customer.find_by(params[:id])
  end
 
  def create
@@ -17,6 +23,21 @@ class Customer::OpusController < ApplicationController
   @opus.save
   redirect_to opus_path
  end
+ def edit
+  @opu = Opu.find(params[:id])
+  @opu_new = Opu.new
+   if @opu.customer.id == current_customer
+    render "edit"
+   else
+    redirect_to opus_path
+   end
+  end
+
+  def destroy
+   @opera = Opus.find(params[:id])
+   @opera.destroy
+    redirect_to opus_path
+  end
 
  def search
   @opus = Opus.search(params[:keyword])

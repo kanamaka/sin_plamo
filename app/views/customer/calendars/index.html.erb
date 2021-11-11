@@ -1,8 +1,12 @@
 <header>
  <%= render 'layouts/header' %>
 </header>
-<%= month_calendar do |date| %>
-  <%= date %>
+<%= link_to "予定でも決める", new_customer_calendar_path ,class: "edit" %>
+<%= month_calendar event: @opera do |date, opera| %>
+  <%= date.day %>
+<% opera.each do |opus| %>
+<%= link_to opus.title,opus_path(opu.id) %>
+<% end %>
 <% end %>
 <footer>
  <%= render 'layouts/footer' %>
