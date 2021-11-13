@@ -1,9 +1,10 @@
 class Customer::CustomersController < ApplicationController
  def show
   @customer = current_customer
-  @customers = Customer.find(params[:id])
+  @customers = Customer.find_by(params[:id])
   @opus = Opu.new
   @opera = Opu.all
+  @opu = Opu.find_by(params[:id])
  end
 
  def index
@@ -14,9 +15,9 @@ class Customer::CustomersController < ApplicationController
  end
 
  def create
-  
+
  end
- 
+
  def edit
   @customer = Customer.find(current_customer.id)
  end

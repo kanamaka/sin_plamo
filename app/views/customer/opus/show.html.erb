@@ -35,30 +35,21 @@
       </table>
   </div>
    <div class='col-md-7 offset-md-1'>
-    <h2>作品一覧</h2>
     <table class='table'>
     <thead>
      <tr>
-      <td style="border:none;" class="table mt-3">作品画像</td>
-      <td style="border:none;" class="table mt-3">作品名</td>
+      <td style="border:none;" class="table mt-3">
+       <h2><%= @opus.opus_name %>作品名表示</h2>
+       <%= @opus.opus_images.each do |image| %>
+         <%= attachment_image_tag :image, class: "size" %>
+       <% end %>
+      </td>
     </tr>
     </thead>
     <tbody>
-      <% @opera.each do |opus| %>
-      <tr>
-       <td style="border:none;">
-        <%= link_to opu_path(opus.customer_id) do %>
-        <%= attachment_image_tag opus, :image, format: 'jpeg', fallback: "logo.jpg", class: "size"%><% end %>
-       </td>
-       <td style="border:none;"><%= opus.opus_name %></td>
-       <td style="border:none;">
-        <% if @customer.id == current_customer.id %>
-         <%= link_to "修正してやる！", edit_opu_path(@customers), class: "btn btn-success btn-block" %>
-        <% end %>
-       </td>
-      </tr>
-      <% end %>
-      </tr>
+   　<td>
+   　 ここに説？
+   　</td>
     </tbody>
    </table>
    </div>

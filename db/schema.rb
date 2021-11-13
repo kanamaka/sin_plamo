@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_10_061402) do
+ActiveRecord::Schema.define(version: 2021_11_13_073634) do
 
   create_table "calendars", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.datetime "start_time"
     t.integer "content_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "customer_id"
+    t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_11_10_061402) do
     t.string "profile_image_id"
     t.string "profile"
     t.string "content_image_id"
+    t.string "image_id"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -51,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_11_10_061402) do
   end
 
   create_table "opus_images", force: :cascade do |t|
-    t.integer "opus_id"
+    t.integer "opu_id"
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

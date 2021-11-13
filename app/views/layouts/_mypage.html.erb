@@ -1,0 +1,22 @@
+<%= image_tag ("logo.jpg"), class: "sizen" %>
+<table>
+ <tr>
+  <td style="border:none;" class="table">名前</td>
+  <td style="border:none;" class="table"><%= @customer.name %></td>
+ </tr>
+ <tr>
+  <td style="border:none;" class="table">自己紹介</td>
+  <td style="border:none;" class="table"><%= @customer.profile %></td>
+ </tr>
+ <tr>
+  <td style="border:none;" class="table">フレンド</td>
+  <td style="border:none;" class="table">おきば</td>
+ </tr>
+ <tr>
+  <th style="border:none;">
+   <%= link_to '会員情報を編集する', edit_customer_path(current_customer.id), class: "btn " %><br>
+   <%= link_to '作品を投稿する！', new_opu_path(current_customer.id), class: "btn " %><br>
+  </th>
+ </tr>
+  <table id="customer-table" class="table mt-3">
+  </table>
