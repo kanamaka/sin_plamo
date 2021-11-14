@@ -1,7 +1,7 @@
 class Customer::CustomersController < ApplicationController
  def show
   @customer = current_customer
-  @customers = Customer.find_by(params[:id])
+  @customers = Customer.find(params[:id])
   @opus = Opu.new
   @opera = Opu.all
   @opu = Opu.find_by(params[:id])

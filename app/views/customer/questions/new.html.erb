@@ -1,0 +1,25 @@
+<header>
+ <%= render 'layouts/header' %>
+</header>
+<div class='container px-10 px-sm-0'>
+ <div class='row'>
+  <div class='col-md-5'>
+    <h2>質問する</h2>
+     <%= form_with(model: @question, local: true) do |f| %>
+     <div>
+     <%= f.label :title, "タイトル" %><br>
+     <%= f.text_field :title %>
+     </div>
+     <div>
+     <%= f.label :content, "本文" %><br>
+     <%= f.text_area :content %>
+     </div>
+     <%= f.submit "質問を投稿する" %>
+     <% end %>
+  </div>
+ </div>
+</div>
+　<hr>
+<footer>
+ <%= render 'layouts/footer' %>
+</footer>

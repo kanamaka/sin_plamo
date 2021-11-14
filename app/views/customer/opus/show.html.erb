@@ -5,50 +5,36 @@
  <div class='row'>
   <div class='col-md-4'>
    <h2 class="plo_name">登録情報</h2>
-   <div>
-    <% if @customer.profile_image_id? %>
-     <%= image_tag @customer.profile_image_id.url, class: "sizen" %>
-    <% else %>
-     <%= image_tag ("logo.jpg"), class: "sizen" %>
-    <% end %>
-   </div>
-   <table>
-    <tr>
-     <td style="border:none;" class="table">名前</td>
-     <td style="border:none;" class="table"><%= @customer.name %></td>
-    </tr>
-    <tr>
-     <td style="border:none;" class="table">自己紹介</td>
-     <td style="border:none;" class="table"><%= @customer.profile %></td>
-    </tr>
-    <tr>
-     <td style="border:none;" class="table">フレンド</td>
-     <td style="border:none;" class="table">おきば</td>
-    </tr>
-    <tr>
-     <th style="border:none;">
-      <%= link_to '会員情報を編集する', edit_customer_path, class: "btn " %><br>
-      <%= link_to '作品を投稿する！', new_opu_path(current_customer.id), class: "btn " %><br>
-     </th>
-    </tr>
-      <table id="customer-table" class="table mt-3">
-      </table>
+   <%= render 'layouts/mypage' %>
   </div>
    <div class='col-md-7 offset-md-1'>
     <table class='table'>
     <thead>
      <tr>
       <td style="border:none;" class="table mt-3">
-       <h2><%= @opus.opus_name %>作品名表示</h2>
-       <%= @opus.opus_images.each do |image| %>
-         <%= attachment_image_tag :image, class: "size" %>
-       <% end %>
+       <h2>
+        作品名表示<br>
+        <%= @opera.opus_name %>
+       </h2>
+       <td>
+        <% @opera.opus_images.each do |image| %>
+        <%= attachment_image_tag image, :image, class: "sizee" %>
+        <% end %>
+       </td>
+       <td>
+        <%= @opera.opus_explanation %>
+       </td>
       </td>
     </tr>
     </thead>
+   </table>
     <tbody>
+   　<td>コメント</td>
    　<td>
-   　 ここに説？
+   　  <%= form_with model:[@comment, @opus], local: true do |f| %>
+      <%= f.text_field :comment, rows:'5',placeholder: "素敵なコメントを" %>
+      <%= f.submit "送信する" %>
+      <% end %>
    　</td>
     </tbody>
    </table>

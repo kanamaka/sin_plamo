@@ -1,7 +1,33 @@
-<div class='container'>
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-     <h1>投稿修正</h1>
-    </div>
-  </div>
-</div>
+<header>
+ <%= render 'layouts/header' %>
+</header>
+    <%= form_with model: @opu, local:true do |f| %>
+      <table id="customer-table" class="table mt-3">
+        <tr>
+         <td style="border:none;">
+          <%= f.label "作品名" %><br>
+          <%= f.text_area :opus_name %>
+         </td>
+        </tr>
+        <tr>
+         <td style="border:none;">
+          <%= f.label "作品説明" %><br>
+          <%= f.text_area :opus_explanation %>
+         </td>
+        </tr>
+        <tr>
+         <td style="border:none;">
+         <%= f.attachment_field :image, multiple: true %>
+         </td>
+        </tr>
+        </tr>
+        <tr>
+         <td style="border:none;">
+          <%= f.submit "作品を修正する！" %>
+         </td>
+        </tr>
+     <% end %>
+   </table>
+<footer>
+ <%= render 'layouts/footer' %>
+</footer>

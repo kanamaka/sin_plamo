@@ -1,1 +1,11 @@
-<div>aaa</div>
+<header>
+ <%= render 'layouts/header' %>
+</header>
+<h2>質問する</h2>
+　<hr>
+<% @questions.each do |question| %>
+  <%= link_to(question.title, "/questions/#{question.id}") %>
+<% end %>
+<footer>
+ <%= render 'layouts/footer' %>
+</footer>

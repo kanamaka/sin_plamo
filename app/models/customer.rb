@@ -8,4 +8,6 @@ class Customer < ApplicationRecord
   has_many :calendar
   has_many :opus, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :questions
+  has_many :favorites, dependent: :destroy
 end

@@ -7,6 +7,7 @@ class Customer::CalendarsController < ApplicationController
  def index
   @customer = current_customer
   @opus = current_customer.opus.find_by(params[:id])
+  @opu_new = Opu.new
   @opera = Opu.where(customer_id: current_customer).order(start_time: "desc").page(params[:page]).per(4)
  end
 
@@ -19,7 +20,7 @@ class Customer::CalendarsController < ApplicationController
  end
 
  def create
-  @opus = Opus.new(opus_params)
+  @opus = Opu.new(opu_params)
   if  opus.customer_id = current_customer.id
    opus.save
    redirect_to customer_calendar_path
@@ -27,7 +28,7 @@ class Customer::CalendarsController < ApplicationController
    render :index
   end
  end
- 
+
  def update
   if @opus.update(update_params)
    redirect_to _customer_calendars_path[:id]
@@ -42,12 +43,12 @@ class Customer::CalendarsController < ApplicationController
  end
 
  private
-  def opus_params
-   params.permit(:start_time,:title, :content)
+  def opu_params
+   params.require(:opu).permit(:start_time,:title, :content)
   end
 
   def update_params
-    params.require(:opus).permit(:start_time,:title, :parts)
+    params.require(:opu).permit(:start_time,:title, :parts)
   end
 
 end

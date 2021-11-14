@@ -10,14 +10,10 @@ Rails.application.routes.draw do
     get 'customer/sign_up/complete', to: 'customers/registrations#complete'
   end
 
-  devise_scope :admin do
-    post 'admin/sign_up/confirm', to: 'admins/registrations#confirm'
-    get 'admin/sign_up/complete', to: 'admins/registrations#complete'
-  end
-
   scope module: :customer do
-   resources :opus,  only: [:new, :create, :index, :show, :destroy, :edit] do
-     resources :comments, only: [:create, :destroy]
+   resources :opus do
+     resource :favorites, only: [:create, :destroy]
+     resource :comments, only: [:create, :destroy]
   end
    resources :tags
    resources :questions
@@ -28,4 +24,5 @@ Rails.application.routes.draw do
   root :to => "customer/tops#top"
   get "/about" => "customer/tops#about"
   get 'search' => 'posts#search'
+  delete 'opud/:id' => 'opus#destroy'
 end
