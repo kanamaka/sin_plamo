@@ -1,54 +1,50 @@
 class Customer::CalendarsController < ApplicationController
- def show
-  @opus = current_customer.opu.find(params[:id])
-  @content = Opus.new
- end
-
  def index
   @customer = current_customer
-  @opus = current_customer.opus.find_by(params[:id])
-  @opu_new = Opu.new
-  @opera = Opu.where(customer_id: current_customer).order(start_time: "desc").page(params[:page]).per(4)
+  @calendar = Calendar.new
+  @calendars = Calendar.all
+  #@calendars = Calendar.where(customer_id: current_customer).order(start_time: "desc").page(params[:page]).per(4)
  end
-
  def new
-  @opera = current_customer.opus
+  @calendar = Calendar.new
  end
-
  def edit
-  @opus = current_customer.opu.find(params[:id])
+  @calendars = current_customer.calendar.find(params[:id])
  end
 
  def create
-  @opus = Opu.new(opu_params)
-  if  opus.customer_id = current_customer.id
-   opus.save
-   redirect_to customer_calendar_path
+  @calendar = Calendar.new(calendars_params)
+  if @calendar.customer_id = current_customer.id
+   @calendar.save
+   redirect_to customer_calendars_path
   else
    render :index
   end
  end
 
  def update
-  if @opus.update(update_params)
-   redirect_to _customer_calendars_path[:id]
+  if @calendar.update(calendars_params)
+   redirect_to customer_calendars_path
   else
    render :edit
   end
  end
 
  def destroy
-  @opus.destroy
+  @calendars.destroy
   redirect_to calendars_path
  end
 
- private
-  def opu_params
-   params.require(:opu).permit(:start_time,:title, :content)
-  end
+ def ensure_correct_customer
+ @calendar = Calendar.find(params[:id])
+   unless @calendar.customer == current_customer
+     redirect_to customer_calendars_path
+   end
+ end
 
-  def update_params
-    params.require(:opu).permit(:start_time,:title, :parts)
+private
+  def calendars_params
+   params.require(:calendar).permit(:start_time,:title, :content )
   end
 
 end

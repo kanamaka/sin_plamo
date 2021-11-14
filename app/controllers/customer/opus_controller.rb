@@ -10,6 +10,7 @@ class Customer::OpusController < ApplicationController
  end
 
  def index
+  @opera = Opu.find(Favorite.group(:opu_id).order('count(opu_id) desc').limit(3).pluck(:opu_id))
   @opera = Opu.all
   @customer = current_customer
   @customers = Customer.find_by(params[:id])
