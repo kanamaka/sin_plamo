@@ -31,10 +31,14 @@
     <tbody>
    　<td>コメント</td>
    　<td>
-   　  <%= form_with model: @opus, method: :post, local: true do |f| %>
+   　  <%#= form_with model: @opus, method: :post, local: true do |f| %>
+   　  <%= form_with url: opu_comments_path(opu_id: @opera.id), method: :post, local: true do |f| %>
       <%= f.text_field :comment, placeholder: "素敵なコメントを" %>
       <%= f.submit "送信する" %>
       <% end %>
+   　</td>
+   　<td>
+   　 <%= @opera.opu.comments %>
    　</td>
     </tbody>
    </table>

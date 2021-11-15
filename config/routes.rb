@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get 'customer/sign_up/complete', to: 'customers/registrations#complete'
   end
 
+  #post 'opus/:id' => 'opus#create'
+
   scope module: :customer do
    resources :opus do
      resource :favorites, only: [:create, :destroy]
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
    end
    resources :customers
    resources :calendars
+   resources :notifications, only: :index
   end
   root :to => "customer/tops#top"
   get "/about" => "customer/tops#about"

@@ -1,10 +1,10 @@
 class Customer::CommentsController < ApplicationController
  def create
-  @comment = current_customer.comments.new(comment_params)
+  @comment = current_customer.comments.new(comments_params)
    if @comment.save
-    redirect_back(fallback_location: root_path) 
+    redirect_back(fallback_location: root_path)
    else
-    redirect_back(fallback_location: root_path)  
+    redirect_back(fallback_location: root_path)
    end
  end
 
@@ -15,7 +15,7 @@ class Customer::CommentsController < ApplicationController
  end
 private
 
-  def comment_params
-    params.require(:comment).permit(:comment)
+  def comments_params
+    params.permit(:comment)
   end
 end
