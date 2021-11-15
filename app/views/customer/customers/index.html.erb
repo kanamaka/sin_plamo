@@ -1,0 +1,40 @@
+<header>
+ <%= render 'layouts/header' %>
+</header>
+ <div class='container'>
+  <div class='row'>
+    <div class='col-md-4'>
+     <%= render 'layouts/mypage' %>
+    </div>
+    <div class='col-md-7 offset-md-1'>
+     <table>
+      <thead width="250">
+         <td>ユーザー一覧</td>
+      </thead>
+      <tbody>
+       <tr>
+        <td width="250" class="border-top">イメージ画像</td>
+        <td width="250" class="border-top">名前</td>
+        <td width="250" class="border-top">ひとこと</td>
+       </tr>
+        <% @customers.each do |customer| %>
+       <tr>
+        <td width="250" class="border-top">
+         <%= attachment_image_tag @customer.profile_image_id, :profile_image, size: "100x100" %>
+        </td>
+        <td width="250" class="border-top">
+         <%= link_to customer_path(@customer.opus) do %>
+         <%= customer.name %>
+         <% end %>
+        </td>
+        <td width="250" class="border-top"><%= customer.profile %></td>
+       </tr>
+       <% end %>
+      </tbody>
+     </table>
+    </div>
+  </div>
+ </div>
+<footer>
+ <%= render 'layouts/footer' %>
+</footer>
