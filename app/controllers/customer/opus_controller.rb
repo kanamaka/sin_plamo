@@ -31,7 +31,6 @@ class Customer::OpusController < ApplicationController
     end
    end
   end
-
   redirect_to customer_path(current_customer)
  end
 

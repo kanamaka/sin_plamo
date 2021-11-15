@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image
   attachment :opus_images
-  has_many :calendar, dependent: :destroy
+  has_many :calendars, dependent: :destroy
   has_many :opus, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :questions, dependent: :destroy

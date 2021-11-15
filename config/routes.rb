@@ -16,7 +16,9 @@ Rails.application.routes.draw do
      resource :comments, only: [:create, :destroy]
   end
    resources :tags
-   resources :questions
+   resources :questions do
+    resource :answer
+   end
    resources :customers
    resources :calendars
   end

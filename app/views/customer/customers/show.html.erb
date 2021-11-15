@@ -17,26 +17,19 @@
     </tr>
     </thead>
     <tbody>
+     <tr>
       <% @opera.each do |opus| %>
       <% if opus.customer_id.to_i == current_customer.id %>
-      <%#= opus.customer_id.to_i.class %>
-      <%#= current_customer.id.to_s.class %>
-      <tr>
        <td style="border:none;">
         <%= link_to opu_path(opus.id) do %>
-        <%= attachment_image_tag(opus.opus_images[0], :image, class: "size") %>
+        <%= attachment_image_tag(opus.opus_images[0], :image, class: "sizen") %>
         <% end %>
        </td>
        <td style="border:none;">
         <%= opus.opus_name %>
        </td>
-       <td style="border:none;">
-         <%= link_to "修正！", edit_opu_path(@opu), class: "btn  btn-block" %>
-       </td>
-       <td style="border:none;">
-         <%= link_to "削除しちゃう？", opu_path(@customers.id), method: :delete, data: {confirm: "本当に削除しますか？"},  class: "btn btn-block" %>
-       </td>
-      </tr>
+       <td style="border:none;"><%= link_to "修正！", edit_opu_path(opus.id), class: "btn  btn-block" %></td>
+       <td style="border:none;"><%= link_to "削除しちゃう？", opu_path(opus.id), method: :delete, data: {confirm: "本当に削除しますか？"},  class: "btn btn-block" %></td>
       <% end %>
       <% end %>
       </tr>

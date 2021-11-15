@@ -17,10 +17,13 @@
   <% end %>
  </div>
 <div class="col-md-9">
- <%= month_calendar event: @customer.calendar do |date, calendar| %>
+
+ <%= month_calendar event: @customer.calendars do |date, calendar| %>
   <%= date %>
-  <% @calendars.each do |calendar| %>
-    <%= calendar.title %>
+  <% @customer.calendars.each do |c| %>
+   <% if date == c.start_time.to_date %>
+    <p><%= c.title %></p>
+   <% end %>
   <% end %>
  <% end %>
   <table class="calendar table table-bordered">

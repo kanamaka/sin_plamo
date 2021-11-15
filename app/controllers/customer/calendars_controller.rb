@@ -2,7 +2,7 @@ class Customer::CalendarsController < ApplicationController
  def show
   @customer = current_customer
   @calendar = Calendar.new
-  @calendars = Calendar.all
+  @calendars = current_customer.calendars
  end
  def index
  end
@@ -10,7 +10,7 @@ class Customer::CalendarsController < ApplicationController
   @calendar = Calendar.new
  end
  def edit
-  @calendars = Calendar.find(params[:id])
+  @calendar = Calendar.find(params[:id])
  end
 
  def create
@@ -24,18 +24,18 @@ class Customer::CalendarsController < ApplicationController
  end
 
  def update
+  @calendar = Calendar.find(params[:id])
   if @calendar.update(calendars_params)
-   if @calendar.update(customer_params)
-    redirect_to calendars_path
-   else
-    render :edit
-   end
+    redirect_to calendar_path(params[:id])
+  else
+   render :edit
   end
  end
 
  def destroy
+  @calendar = Calendar.find(params[:id])
   @calendar.destroy
-  redirect_to calendar_path
+  redirect_to calendar_path(params[:id])
  end
 
  def ensure_correct_customer

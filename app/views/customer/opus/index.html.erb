@@ -21,6 +21,8 @@
        <th style="border:none;">スキ！</th>
       </td>
      </tr>
+    </thead>
+    <tbody>
      <tr>
       <% @opera.each do |opus| %>
        <td style="border:none;">
@@ -39,7 +41,6 @@
           <%= opus.favorites.count %>
           <% end %>
          <% end %>
-          <%= opus.comment.count %>
          <% end %>
         <td style="border:none;">
          <% if opus.customer_id.to_i == current_customer.id %>
@@ -54,8 +55,8 @@
        </td>
       </td>
     </tr>
+   </tbody>
      <% end %>
-    </thead>
    </table>
   </div>
  </div>

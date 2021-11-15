@@ -5,7 +5,9 @@ class Opu < ApplicationRecord
  attachment :image
  has_many :favorites, dependent: :destroy
  has_many :favorited_customer, through: :favorites, source: :customer
- 
+ validates :opus_name, presence: true
+ validates :opus_explanation, presence: true
+ validates :opus_image_id, presence: true
 
   def favorited_by?(customer)
    favorites.where(customer_id: customer.id).exists?
