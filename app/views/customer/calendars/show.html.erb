@@ -1,0 +1,57 @@
+<header>
+ <%= render 'layouts/header' %>
+</header>
+<div class="container-fluid">
+ <h2 class="section-top"><span class="fas fa-robot" aria-hidden="true"></span>作る予定を建てる！</h2>
+ <div class="col-md-3">
+  <%= form_with(model: @calendar, local: true) do |f| %>
+  <label for="menu">タイトル</label>
+  <p><%= f.text_field :title %></p>
+  <label for="menu">内容</label>
+  <p><%= f.text_field :content %></p>
+  <label for="parts">箇所</label>
+  <p><%= f.select :parts, [["head", "head"], ["body", "body"], ["arm", "arm"], ["waist", "waist"], ["leg", "leg"],["backpack", "bakcpack"],["wepon", "wepon"],["file", "file"],["painting", "painting"],["surfacer", "surfacer"]], include_blank: "選択して下さい" %></p>
+  <label for="start_time">予定日</label>
+  <p><%= f.datetime_select :start_time%></p>
+  <%= f.submit "予定を入れる", class: "btn btn-sm btn-hachiss" %>
+  <% end %>
+ </div>
+<div class="col-md-9">
+ <%= month_calendar event: @customer.calendar do |date, calendar| %>
+  <%= date %>
+  <% @calendars.each do |calendar| %>
+    <%= calendar.title %>
+  <% end %>
+ <% end %>
+  <table class="calendar table table-bordered">
+   <thead>
+    <tr>
+	 <th>タイトル</th>
+	 <th>内容</th>
+	 <th>箇所</th>
+	 <th>予定日</th>
+	 <th></th>
+	 <th></th>
+    </tr>
+   </thead>
+   <% @calendars.each do |calendar| %>
+   <% if calendar.customer_id.to_i == current_customer.id %>
+    <tbody>
+     <tr>
+      <td><%= calendar.title %></td>
+      <td><%= calendar.content %></td>
+      <td><%= calendar.parts %></td>
+	　<td><%= calendar.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+	　<td><%=link_to "予定は未定" , edit_calendar_path(calendar) %></td>
+	　<td><%=link_to "削除",calendar_path(calendar) , method: :delete , data: {confirm:"削除しますか"} %></td>
+     </tr>
+    </tbody>
+   <% end %>
+   <% end %>
+  </table>
+</div>
+ </div>
+</div>
+<footer>
+ <%= render 'layouts/footer' %>
+</footer>

@@ -15,9 +15,11 @@
    <table class='table table-hover table-inverse width'>
     <thead><h1>投稿一覧</h1>
      <tr>
-      <th style="border:none;">作品画像</th>
-      <th style="border:none;">タイトル</th>
-      <th style="border:none;">スキ！</th>
+      <td style="border:none;">
+       <th style="border:none;">作品画像</th>
+       <th style="border:none;">タイトル</th>
+       <th style="border:none;">スキ！</th>
+      </td>
      </tr>
      <tr>
       <% @opera.each do |opus| %>
@@ -37,15 +39,16 @@
           <%= opus.favorites.count %>
           <% end %>
          <% end %>
+          <%= opus.comment.count %>
          <% end %>
         <td style="border:none;">
          <% if opus.customer_id.to_i == current_customer.id %>
-         <%= link_to "修正！", edit_opu_path(opus), class: "btn btn-success btn-block" %>
+         <%= link_to "修正！", edit_opu_path(opus.id), class: "btn btn-success btn-block" %>
          <% end %>
         </td>
         <td style="border:none;">
          <% if opus.customer_id.to_i == current_customer.id %>
-         <%= link_to "削除しちゃう？", opu_path(opus), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-success btn-block" %>
+         <%= link_to "削除しちゃう？", opu_path(opus.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-success btn-block" %>
          <% end %>
         </td>
        </td>

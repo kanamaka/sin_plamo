@@ -8,7 +8,8 @@ class Customer < ApplicationRecord
   has_many :calendar, dependent: :destroy
   has_many :opus, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :questions
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_opus, through: :favorites, source: :opu
 end

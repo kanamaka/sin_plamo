@@ -1,0 +1,22 @@
+<header>
+ <%= render 'layouts/header' %>
+</header>
+ <div class="container-fluid">
+  <h2 class="section-top"><span class="fas fa-robot"></span>作る予定を変える!<span class="fas fa-robot"></span></h2>
+ <div class="col-md-3 col-sm-12 col-xs-12">
+ <%= form_with model: @calendar, local: true do |f| %>
+  <label for="menu">タイトル</label>
+  <p><%= f.text_field :title %></p>
+  <label for="menu">内容</label>
+  <p><%= f.text_field :content %></p>
+  <label for="parts">箇所</label>
+  <p><%= f.select :parts, [["head", "head"], ["body", "body"], ["arm", "arm"], ["waist", "waist"], ["leg", "leg"],["backpack", "bakcpack"],["wepon", "wepon"],["file", "file"],["painting", "painting"],["surfacer", "surfacer"]], include_blank: "選択して下さい" %></p>
+  <label for="start_time">予定日</label>
+  <p><%= f.datetime_select :start_time%></p>
+  <%= f.submit "予定を変える", class: "btn btn-sm btn-hachiss" %>
+ <% end %>
+ </div>     
+ </div>
+<footer>
+ <%= render 'layouts/footer' %>
+</footer>

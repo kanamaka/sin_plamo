@@ -8,7 +8,7 @@
   <% if customer_signed_in? %>
    <li style="list-style: none;"><%= link_to customer_path(current_customer.id) do %><%= image_tag 'my.jpeg', class: "size"%><% end %></li>
    <li style="list-style: none;"><%= link_to opus_path do %><%= image_tag 'penguin.jpeg', class: "size"%><% end %></li>
-   <li style="list-style: none;"><%= link_to customer_calendars_path(current_customer.id) do %><%= image_tag 'calendar.jpeg', class: "size"%><% end %></li>
+   <li style="list-style: none;"><%= link_to calendar_path(current_customer.id) do %><%= image_tag 'calendar.jpeg', class: "size"%><% end %></li>
    <li style="list-style: none;"><%= link_to new_question_path(current_customer.id) do %><%= image_tag 'question.jpeg', class: "size"%><% end %></li>
    <li style="list-style: none;"><%= link_to destroy_customer_session_path, method: :delete do%><%= image_tag 'logout.jpeg', class: "size"%><% end %></li>
  <% else %>

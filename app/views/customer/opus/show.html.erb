@@ -31,8 +31,8 @@
     <tbody>
    　<td>コメント</td>
    　<td>
-   　  <%= form_with model:[@comment, @opus], local: true do |f| %>
-      <%= f.text_field :comment, rows:'5',placeholder: "素敵なコメントを" %>
+   　  <%= form_with model: @opus, method: :post, local: true do |f| %>
+      <%= f.text_field :comment, placeholder: "素敵なコメントを" %>
       <%= f.submit "送信する" %>
       <% end %>
    　</td>

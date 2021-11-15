@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_174420) do
+ActiveRecord::Schema.define(version: 2021_11_15_083706) do
+
+  create_table "answers", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "question_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_answers_on_customer_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
 
   create_table "calendars", force: :cascade do |t|
     t.string "title"
@@ -20,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_11_14_174420) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
+    t.string "parts"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -82,6 +93,7 @@ ActiveRecord::Schema.define(version: 2021_11_14_174420) do
     t.integer "content_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
   end
 
   create_table "tag_maps", force: :cascade do |t|

@@ -1,13 +1,16 @@
 class Customer::CommentsController < ApplicationController
  def create
-  @comment = current_customer.post_comments.new(post_comment_params)
-  @comment.opus_image_id = opus_image.id
-  @comment.save
-  redirect_to customer_path
+  @comment = current_customer.comments.new(comment_params)
+   if @comment.save
+    redirect_back(fallback_location: root_path) 
+   else
+    redirect_back(fallback_location: root_path)  
+   end
  end
 
  def destroy
-  Comment.find_by(id: params[:id]).destroy
+  @comment = Comment.find(params[:id])
+  @comment.destroy
   redirect_to customer_path(params[:opus_id])
  end
 private

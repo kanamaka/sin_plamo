@@ -17,12 +17,12 @@ Rails.application.routes.draw do
   end
    resources :tags
    resources :questions
-   resources :customers do
-     resources :calendars
-   end
+   resources :customers
+   resources :calendars
   end
   root :to => "customer/tops#top"
   get "/about" => "customer/tops#about"
   get 'search' => 'posts#search'
   delete 'opud/:id' => 'opus#destroy'
+  post 'calendars/:id' => 'calendar#show'
 end

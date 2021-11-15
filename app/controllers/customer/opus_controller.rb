@@ -1,8 +1,8 @@
 class Customer::OpusController < ApplicationController
  def show
-  @opus = Opu.new
   @customer = current_customer
   @opera = Opu.find(params[:id])
+  @comment = current_customer.comments.new
  end
 
  def new
@@ -60,7 +60,7 @@ class Customer::OpusController < ApplicationController
  end
 
  def destroy
-  @opus = Opu.find_by(params[:id])
+  @opus = Opu.find(params[:id])
   @opus.destroy
   redirect_to opus_path
  end
@@ -68,7 +68,7 @@ class Customer::OpusController < ApplicationController
  def search
   @opus = Opu.search(params[:keyword])
   @keyword = params[:keyword]
-  render "index"
+  redirect_to opu_path
  end
 
   private

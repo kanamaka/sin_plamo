@@ -1,22 +1,23 @@
 class Customer::CalendarsController < ApplicationController
- def index
+ def show
   @customer = current_customer
   @calendar = Calendar.new
   @calendars = Calendar.all
-  #@calendars = Calendar.where(customer_id: current_customer).order(start_time: "desc").page(params[:page]).per(4)
+ end
+ def index
  end
  def new
   @calendar = Calendar.new
  end
  def edit
-  @calendars = current_customer.calendar.find(params[:id])
+  @calendars = Calendar.find(params[:id])
  end
 
  def create
   @calendar = Calendar.new(calendars_params)
   if @calendar.customer_id = current_customer.id
    @calendar.save
-   redirect_to customer_calendars_path
+   redirect_to calendar_path(current_customer.id)
   else
    render :index
   end
@@ -24,15 +25,17 @@ class Customer::CalendarsController < ApplicationController
 
  def update
   if @calendar.update(calendars_params)
-   redirect_to customer_calendars_path
-  else
-   render :edit
+   if @calendar.update(customer_params)
+    redirect_to calendars_path
+   else
+    render :edit
+   end
   end
  end
 
  def destroy
-  @calendars.destroy
-  redirect_to calendars_path
+  @calendar.destroy
+  redirect_to calendar_path
  end
 
  def ensure_correct_customer
@@ -44,7 +47,7 @@ class Customer::CalendarsController < ApplicationController
 
 private
   def calendars_params
-   params.require(:calendar).permit(:start_time,:title, :content )
+   params.require(:calendar).permit(:start_time,:title, :content, :parts )
   end
 
 end

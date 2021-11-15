@@ -1,11 +1,21 @@
 <header>
  <%= render 'layouts/header' %>
 </header>
-<h2>質問する</h2>
-　<hr>
-<% @questions.each do |question| %>
-  <%= link_to(question.title, "/questions/#{question.id}") %>
-<% end %>
+ <div class="row mt-5" style="width: 100%; margin-bottom:300px">
+  <div style="width: 800px; margin:0 auto;">
+   <h4>質問一覧</h4>
+   <tr>
+    <% @questions.each do |question| %>
+    <td>
+     <%= @question.title %>
+    </td>
+    <td>
+     <%= @question.content %>
+    </td>
+    <% end %>
+   </tr>
+  </div>
+ </div>
 <footer>
  <%= render 'layouts/footer' %>
 </footer>
