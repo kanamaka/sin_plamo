@@ -8,28 +8,30 @@
     <%= render 'layouts/mypage' %>
   </div>
    <div class='col-md-7 offset-md-1'>
-    <h2>投稿一覧</h2>
-    <table class='table'>
+    <table>
+     <h2><%= @customer.name %>さんの投稿一覧</h2>
+     <td></td>
+     <td></td>
     <thead>
-     <tr>
-      <td style="border:none;" class="table mt-3">作品画像</td>
-      <td style="border:none;" class="table mt-3">作品名</td>
+     <tr width="900">
+      <td style="border:none;" width="300">作品画像</td>
+      <td style="border:none;" width="300">作品名</td>
     </tr>
     </thead>
     <tbody>
      <tr>
       <% @opera.each do |opus| %>
       <% if opus.customer_id.to_i == current_customer.id %>
-       <td style="border:none;">
+      <tr width="250">
+       <td style="border:none;" width="300">
         <%= link_to opu_path(opus.id) do %>
-        <%= attachment_image_tag(opus.opus_images[0], :image, class: "sizen") %>
+        <%= attachment_image_tag(opus.opus_images[0], :image, class: "size") %>
         <% end %>
+        <td style="border:none;" width="300"><%= opus.opus_name %></td>
+        <td style="border:none;" width="300"><%= link_to "修正！", edit_opu_path(opus.id), class: "btn  btn-block" %></td>
+        <td style="border:none;" width="300"><%= link_to "削除しちゃう？", opu_path(opus.id), method: :delete, data: {confirm: "本当に削除しますか？"},  class: "btn btn-block" %></td>
        </td>
-       <td style="border:none;">
-        <%= opus.opus_name %>
-       </td>
-       <td style="border:none;"><%= link_to "修正！", edit_opu_path(opus.id), class: "btn  btn-block" %></td>
-       <td style="border:none;"><%= link_to "削除しちゃう？", opu_path(opus.id), method: :delete, data: {confirm: "本当に削除しますか？"},  class: "btn btn-block" %></td>
+      </tr>
       <% end %>
       <% end %>
       </tr>

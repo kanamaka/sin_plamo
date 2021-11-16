@@ -19,7 +19,7 @@ class Customer::OpusController < ApplicationController
  def create
   @opus = Opu.new(opus_params)
   @opus.customer_id = current_customer.id
-  @opus.save
+  @opus.save!
   if params[:opu][:image].present?
    params[:opu][:image].shift
    params[:opu][:image].each do |image|
@@ -73,6 +73,6 @@ class Customer::OpusController < ApplicationController
   private
 
   def opus_params
-    params.require(:opu).permit(:opus_name, :image, :opus_explanation)
+    params.require(:opu).permit(:opus_name, :opus_explanation, opus_images_images: [])
   end
 end
