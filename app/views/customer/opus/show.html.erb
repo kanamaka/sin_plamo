@@ -8,28 +8,22 @@
    <%= render 'layouts/mypage' %>
   </div>
    <div class='col-md-7 offset-md-1'>
-    <table class='table'>
-    <thead>
+    <table>
+     <tr width="900">
+      <td style="border:none;" width="300">作品名<span class="offset-md-1"><%= @opera.opus_name %></span></td>
+     </tr>
+    </table>
+    <tbody>
      <tr>
-      <td style="border:none;" class="table mt-3">
-       <h2>
-        作品名表示<br>
-        <%= @opera.opus_name %>
-       </h2>
-       <td>
+      <td>
         <% @opera.opus_images.each do |image| %>
-        <%= attachment_image_tag image, :image, class: "sizee" %>
+        <td><%= attachment_image_tag image, :image, class: "sizen", size: '50x50' %></td>
         <% end %>
        </td>
-       <td>
-        <%= @opera.opus_explanation %>
-       </td>
-      </td>
-    </tr>
-    </thead>
-   </table>
-    <tbody>
-   　<td>コメント</td>
+     </tr>
+     </tbody>
+    <tfoot>
+     <td>コメント</td>
    　<td>
    　  <%#= form_with model: @opus, method: :post, local: true do |f| %>
    　  <%= form_with url: opu_comments_path(opu_id: @opera.id), method: :post, local: true do |f| %>
@@ -37,10 +31,7 @@
       <%= f.submit "送信する" %>
       <% end %>
    　</td>
-   　<td>
-   　</td>
-    </tbody>
-   </table>
+    </tfoot>
    </div>
  </div>
 </div>

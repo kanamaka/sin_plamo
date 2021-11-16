@@ -4,7 +4,7 @@ class Opu < ApplicationRecord
  belongs_to :customer
  attachment :image
  has_many :favorites, dependent: :destroy
- has_many :comments, dependent: :destroy
+ has_many :comments
  has_many :favorited_customer, through: :favorites, source: :customer
  validates :opus_name, presence: true
  validates :opus_explanation, presence: true

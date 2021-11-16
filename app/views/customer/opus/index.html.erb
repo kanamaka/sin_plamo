@@ -13,24 +13,23 @@
    </div>
   <div class='col-md-8'>
    <table class='table table-hover table-inverse width'>
-    <thead><h1>投稿一覧</h1>
+    <thead width="900"><h1>投稿一覧</h1>
      <tr>
-      <td style="border:none;">
-       <th style="border:none;">作品画像</th>
-       <th style="border:none;">タイトル</th>
-       <th style="border:none;">スキ！</th>
+       <th style="border:none;" width="300">作品画像</th>
+       <th style="border:none;" width="300">タイトル</th>
+       <th style="border:none;" width="300">スキ！</th>
       </td>
      </tr>
     </thead>
-    <tbody>
+    <tbody width="1000">
      <tr>
       <% @opera.each do |opus| %>
-       <td style="border:none;">
+       <td style="border:none;" width="300">
         <%= link_to opu_path(opus.id) do %>
         <%= attachment_image_tag(opus.opus_images[0], :image, class: "sizee") %>
-        <td style="border:none;"><%= opus.opus_name %></td>
+        <td style="border:none;" width="300"><%= opus.opus_name %></td>
         <% end %>
-        <td style="border:none;">
+        <td style="border:none;" width="100">
          <% if opus.customer_id.to_i != current_customer.id %>
          <% if opus.favorited_by?(current_customer) %>
           <%= link_to opu_favorites_path(opus), method: :delete,  class: "fa fa-thumbs-up" do %>
@@ -42,13 +41,9 @@
           <% end %>
          <% end %>
          <% end %>
-        <td style="border:none;">
+        <td style="border:none;" width="300">
          <% if opus.customer_id.to_i == current_customer.id %>
          <%= link_to "修正！", edit_opu_path(opus.id), class: "btn btn-success btn-block" %>
-         <% end %>
-        </td>
-        <td style="border:none;">
-         <% if opus.customer_id.to_i == current_customer.id %>
          <%= link_to "削除しちゃう？", opu_path(opus.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-success btn-block" %>
          <% end %>
         </td>
