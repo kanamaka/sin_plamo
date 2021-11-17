@@ -1,0 +1,2 @@
+class SinPlamoPost < ApplicationRecord
+end
