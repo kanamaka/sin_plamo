@@ -4,8 +4,8 @@
  <div class='container px-5 px-sm-0'>
  <div class='row'>
   <div class='col-md-4'>
-   <h2 class="plo_name">登録情報</h2>
-   <%= render 'layouts/mypage' %>
+   <h2 class="plo_name"><%= @customer.name %>さんのプロフ</h2>
+   <%= render 'layouts/mypage2opu' %>
   </div>
    <div class='col-md-7 offset-md-1'>
     <table>
@@ -17,19 +17,30 @@
      <tr>
       <td>
         <% @opera.opus_images.each do |image| %>
-        <td><%= attachment_image_tag image, :image, class: "sizen", size: '50x50' %></td>
+        <td><%= attachment_image_tag image, :image, class: "sizen" %></td>
         <% end %>
        </td>
+     </tr>
+     <tr><td style="border:none;" width="300"><span class="offset-md-1"><%= @opera.opus_explanation %></span></td></tr>
+     <tr>
+
      </tr>
      </tbody>
     <tfoot>
      <td>コメント</td>
    　<td>
-   　  <%#= form_with model: @opus, method: :post, local: true do |f| %>
-   　  <%= form_with url: opu_comments_path(opu_id: @opera.id), method: :post, local: true do |f| %>
+   　  <%= form_with url: opu_comments_path(@opera.id), method: :post, local: true do |f| %>
       <%= f.text_field :comment, placeholder: "素敵なコメントを" %>
       <%= f.submit "送信する" %>
       <% end %>
+   　</td>
+   　<td>
+   　 <tr>
+   　 <p>コメント一覧</p>
+   　 <td>
+
+   　 </td>
+   　 </tr>
    　</td>
     </tfoot>
    </div>

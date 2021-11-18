@@ -11,6 +11,7 @@ class Opu < ApplicationRecord
  validates :opus_images_images, presence: true
  has_many :notifications, dependent: :destroy
 
+
  def favorited_by?(customer)
    favorites.where(customer_id: customer.id).exists?
  end

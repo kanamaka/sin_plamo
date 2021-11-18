@@ -1,7 +1,7 @@
 class Customer::OpusController < ApplicationController
  def show
-  @customer = current_customer
   @opera = Opu.find(params[:id])
+  @customer = @opera.customer
   @comment = current_customer.comments.new
  end
 
@@ -19,7 +19,7 @@ class Customer::OpusController < ApplicationController
  def create
   @opus = Opu.new(opus_params)
   @opus.customer_id = current_customer.id
-  @opus.save!
+  @opus.save
   if params[:opu][:image].present?
    params[:opu][:image].shift
    params[:opu][:image].each do |image|

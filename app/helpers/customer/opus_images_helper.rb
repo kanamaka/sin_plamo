@@ -1,0 +1,2 @@
+module Customer::OpusImagesHelper
+end

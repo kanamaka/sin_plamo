@@ -1,8 +1,10 @@
 <header>
  <%= render 'layouts/header' %>
 </header>
-    <%= form_with model: @opu, local:true do |f| %>
-      <table id="customer-table" class="table mt-3">
+ <div class="container">
+  <div class="row">
+   <%= form_with model: @opu, local:true do |f| %>
+      <table>
         <tr>
          <td style="border:none;">
           <%= f.label "作品名" %><br>
@@ -16,10 +18,15 @@
          </td>
         </tr>
         <tr>
-         <td style="border:none;">
-         <%= f.attachment_field :image, multiple: true %>
+         <td>
+         <%= link_to "画像を削除しに行く", opu_opus_image_path(@opu) %>
          </td>
         </tr>
+        <tr>
+         <td style="border:none;">
+         <%= f.label "画像を追加する" %><br>
+         <%= f.attachment_field :image, multiple: true %>
+         </td>
         </tr>
         <tr>
          <td style="border:none;">
@@ -28,6 +35,8 @@
         </tr>
      <% end %>
    </table>
+  </div>
+ </div>
 <footer>
  <%= render 'layouts/footer' %>
 </footer>

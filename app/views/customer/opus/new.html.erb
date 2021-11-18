@@ -1,38 +1,26 @@
-<header>
- <%= render 'layouts/header' %>
-</header>
-<% if @opus.errors.any? %>
-  <%= @opus.errors.count %>件のエラーが発生しました
-  <% @opus.errors.full_messages.each do |message| %>
-<%= message %>
-  <% end %>
-<% end %>
- <%= form_with model: @opus, local:true do |f| %>
-  <table id="customer-table" class="table mt-3">
-   <tr>
-    <td style="border:none;">
-    <%= f.label "作品名" %><br>
-    <%= f.text_field :opus_name %>
-    </td>
-   </tr>
-   <tr>
-    <td style="border:none;">
-    <%= f.label "作品説明" %><br>
-    <%= f.text_area :opus_explanation %>
-    </td>
-   </tr>
-   <tr>
-   <td style="border:none;">
-    <%= f.attachment_field :opus_images_images, multiple: true %>
-   </td>
-   </tr>
-   <tr>
-    <td style="border:none;">
-    <%= f.submit "作品を投稿する！" %>
-    </td>
-   </tr>
-  <% end %>
- </table>
-<footer>
- <%= render 'layouts/footer' %>
-</footer>
+<header><%= render 'layouts/header' %></header>
+<table>
+ <div class="container_new">
+  <div class="row header">
+    <h1>NEW_OPUS!</h1><br>
+    <h4>あなただけの素敵な作品を投稿しよう！</h4>
+  </div>
+  <div>
+   <%= form_with model: @opus, local:true do |f| %>
+    <div>
+      <p class="left">
+       <%= f.label "作品名", class: "label" %><br>
+       <%= f.text_field :opus_name, class: "input-text form", size: 40 %>
+      </p>
+      <p>
+       <%= f.label "作品説明", class: "label" %><br>
+       <%= f.text_area :opus_explanation, class: "input-text form text-comment" %>
+      </p>
+     <p><%= f.file_field :opus_images_images, multiple: true %></p>
+     <p><%= f.submit "作品を投稿する！", class: "submit-btn" %></p>
+    </div>
+   <% end %>
+  </div>
+</div>
+</table>
+<footer><%= render 'layouts/footer' %></footer>

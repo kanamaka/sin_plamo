@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_113644) do
+ActiveRecord::Schema.define(version: 2021_11_18_155558) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "customer_id"
@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(version: 2021_11_15_113644) do
     t.index ["customer_id", "opu_id"], name: "index_favorites_on_customer_id_and_opu_id", unique: true
   end
 
+  create_table "friends", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "follow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id", "follow_id"], name: "index_friends_on_customer_id_and_follow_id", unique: true
+    t.index ["customer_id"], name: "index_friends_on_customer_id"
+    t.index ["follow_id"], name: "index_friends_on_follow_id"
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "opu_id"
@@ -87,6 +97,9 @@ ActiveRecord::Schema.define(version: 2021_11_15_113644) do
     t.datetime "updated_at", null: false
     t.string "image_id"
     t.string "customer_id"
+    t.string "image"
+    t.string "name"
+    t.string "profile"
   end
 
   create_table "opus_images", force: :cascade do |t|
@@ -94,6 +107,8 @@ ActiveRecord::Schema.define(version: 2021_11_15_113644) do
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "customer_id"
+    t.string "opus_image_id"
   end
 
   create_table "questions", force: :cascade do |t|

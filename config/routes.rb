@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   scope module: :customer do
    resources :opus do
+     resource :opus_image, only: [:destroy, :show, :edit]
      resource :favorites, only: [:create, :destroy]
      resource :comments, only: [:create, :destroy]
   end
@@ -21,7 +22,9 @@ Rails.application.routes.draw do
    resources :questions do
     resource :answer
    end
-   resources :customers
+   resources :customers do
+    resource :friend, only: [:create, :destroy]
+   end
    resources :calendars
    resources :notifications, only: :index
   end
@@ -30,4 +33,5 @@ Rails.application.routes.draw do
   get 'search' => 'posts#search'
   delete 'opud/:id' => 'opus#destroy'
   post 'calendars/:id' => 'calendar#show'
+  delete 'opus/:opu_id/opus_image' => 'opus_images#destroy'
 end
