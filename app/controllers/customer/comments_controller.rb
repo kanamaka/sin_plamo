@@ -1,21 +1,23 @@
 class Customer::CommentsController < ApplicationController
+ layout 'customer/opus/show'
+
+ def show
+  @commenter = Opu.find(params[:id])
+  @comments = @commenter.comments
+  @comment = current_customer.comments.new
+ end
+ 
  def create
-  @comment = current_customer.comments.new(comments_params)
-   if @comment.save
-    redirect_back(fallback_location: root_path)
-   else
-    redirect_back(fallback_location: root_path)
-   end
+  @comment = current_customer.comments.new(comment_params)
+  if @comment.save
+  redirect_back(fallback_location: root_path)
+  else
+  redirect_back(fallback_location: root_path)
+  end
  end
 
- def destroy
-  @comment = Comment.find(params[:id])
-  @comment.destroy
-  redirect_to customer_path(params[:opus_id])
- end
-private
-
-  def comments_params
-    params.permit(:comment)
+  private
+  def comment_params
+    params.permit(:content)
   end
 end

@@ -1,20 +1,36 @@
 <header>
  <%= render 'layouts/header' %>
 </header>
-<p><%= @question.title %></p>
-<p><%= @question.content %></p>
-<% if @question.customer_id == current_customer.id %>
-
-<% end %>
-<div>
-  <%= form_with(model: @question, local: true) do |f| %>
-    <div>
-      <%= f.label :body, "回答" %><br>
-      <%= f.text_area :body %>
-    </div>
-    <%= f.submit %>
-  <% end %>
-</div>
+<table>
+ <tr class="container_new">
+  <td><h2><%= @question.title %></h2></td>
+  <td class="row">
+  <tr><td class="row"><%= @question.content %></td></tr>
+  <td>
+   <%= form_with(model: [@question, @answer], local: true) do |f| %>
+   <%= f.label :content, "回答" %><br>
+   <%= f.text_area :content, class: "input-text form text-comment" %><br>
+   <%= f.submit "回答する！", class: "submit-btn" %>
+   <% end %>
+  </td>
+  <tr>
+   <td>
+    回答一覧
+   </td>
+  <tr>
+   <td>
+    <% @question.answers.each do |answer| %>
+    <tr>
+     <td><%= answer.content %></td>
+     <td><%= link_to"回答を削除する", question(@question.id), method: :delete, data: {confirm: "本当に削除しますか？"}) %></td>
+    </tr>
+    <% end %>
+   </td>
+  </tr>
+  </tr>
+  </td>
+ </tr>
+</table>
 <footer>
  <%= render 'layouts/footer' %>
 </footer>

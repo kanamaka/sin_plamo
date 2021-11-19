@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_18_155558) do
+ActiveRecord::Schema.define(version: 2021_11_19_165823) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "customer_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_11_18_155558) do
     t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "opu_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -70,12 +71,12 @@ ActiveRecord::Schema.define(version: 2021_11_18_155558) do
 
   create_table "friends", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "follow_id"
+    t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id", "follow_id"], name: "index_friends_on_customer_id_and_follow_id", unique: true
+    t.index ["customer_id", "follower_id"], name: "index_friends_on_customer_id_and_follower_id", unique: true
     t.index ["customer_id"], name: "index_friends_on_customer_id"
-    t.index ["follow_id"], name: "index_friends_on_follow_id"
+    t.index ["follower_id"], name: "index_friends_on_follower_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -119,6 +120,22 @@ ActiveRecord::Schema.define(version: 2021_11_18_155558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
+  end
+
+  create_table "tag_relationships", force: :cascade do |t|
+    t.integer "opu_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["opu_id", "tag_id"], name: "index_tag_relationships_on_opu_id_and_tag_id", unique: true
+    t.index ["opu_id"], name: "index_tag_relationships_on_opu_id"
+    t.index ["tag_id"], name: "index_tag_relationships_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

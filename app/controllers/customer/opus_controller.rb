@@ -2,7 +2,17 @@ class Customer::OpusController < ApplicationController
  def show
   @opera = Opu.find(params[:id])
   @customer = @opera.customer
+  @commenter = Opu.find(params[:id])
+  @comments = @commenter.comments
   @comment = current_customer.comments.new
+  def create
+   @comment = current_customer.opus.new(comments_params)
+   if @comment.save
+    redirect_back(fallback_location: root_path)
+   else
+    redirect_back(fallback_location: root_path)
+   end
+  end
  end
 
  def new
@@ -17,6 +27,7 @@ class Customer::OpusController < ApplicationController
  end
 
  def create
+  #画像作成ブロック
   @opus = Opu.new(opus_params)
   @opus.customer_id = current_customer.id
   @opus.save
@@ -32,6 +43,13 @@ class Customer::OpusController < ApplicationController
    end
   end
   redirect_to customer_path(current_customer)
+  #タグ作成ブロック
+  #@opu_tag = current_customer.opus.build(opus_params)
+  #tag_list = params[:opu][:tag_ids].split(',')
+  #if @opu_tag.save
+   #@opu_tag.save_tags(tag_list)
+  #end
+  #コメント機能作成ブロック
  end
 
  def edit
@@ -73,6 +91,10 @@ class Customer::OpusController < ApplicationController
   private
 
   def opus_params
-    params.require(:opu).permit(:opus_name, :opus_explanation, opus_images_images: [])
+    params.require(:opu).permit(:opus_name, :opus_explanation, :tag, opus_images_images: [])
+  end
+
+  def comments
+    params.require(:comment).permit(:comments)
   end
 end

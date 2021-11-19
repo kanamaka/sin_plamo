@@ -5,7 +5,7 @@
   <div style="width: 800px; margin:0 auto;">
    <h4 class="edit">会員情報編集</h4>
    <%= form_with model: @customer, local:true do |f| %>
-   <table id="customers-table" class="table mt-6">
+   <table>
     <tr>
      <td style="border:none;"><%= f.label "名前", class: "col-sm-5 col-form-control mt-1" %></td>
      <td style="border:none;"><%= f.text_field :name, class: "form" %></td>

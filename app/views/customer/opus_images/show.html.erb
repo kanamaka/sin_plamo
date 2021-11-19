@@ -3,9 +3,9 @@
 </header>
  <table class="container">
   <tbody>
-   <%= form_with model: @opu, local:true do |f| %>
+  <td><%= @opus.opus_name %>に現在登録されている画像（削除するものはチェックしてください)</td>
+  <%= form_with model: @opu, local:true do |f| %>
   <% if @opus.opus_images.present? %>
-  <tr><td><p>現在登録されている画像（削除するものはチェックしてください)</p></td></tr>
   <tr>
    <td>
  　<% @opus.opus_images.each do |image| %>
@@ -14,8 +14,11 @@
  　<% end %>
 　</td>
   </tr>
-  <tr><td style="border:none;">
-   <%= f.submit "選択した画像をなかったことにする" %></td></tr>
+  <tr>
+   <td>
+    <%= link_to '削除してみる', opu_path(:id), method: :delete, class: 'btn btn-danger' %>
+   </td>
+  </tr>
 　<% end %>
   <% end %>
   </tbody>

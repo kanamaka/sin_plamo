@@ -11,6 +11,12 @@
     <table>
      <tr width="900">
       <td style="border:none;" width="300">作品名<span class="offset-md-1"><%= @opera.opus_name %></span></td>
+      <td style="border:none;" width="300">コメント<span class="offset-md-1"><%= @opera.opus_explanation %></span></td>
+      <td>
+       <% @opera.tags.each do |tag| %>
+       <%= tag.name %>
+       <% end %>
+      </td>
      </tr>
     </table>
     <tbody>
@@ -21,27 +27,24 @@
         <% end %>
        </td>
      </tr>
-     <tr><td style="border:none;" width="300"><span class="offset-md-1"><%= @opera.opus_explanation %></span></td></tr>
      <tr>
-
      </tr>
      </tbody>
     <tfoot>
-     <td>コメント</td>
    　<td>
-   　  <%= form_with url: opu_comments_path(@opera.id), method: :post, local: true do |f| %>
+   　  <%= form_with model: @commenter, local: true do |f| %>
       <%= f.text_field :comment, placeholder: "素敵なコメントを" %>
       <%= f.submit "送信する" %>
       <% end %>
    　</td>
-   　<td>
    　 <tr>
-   　 <p>コメント一覧</p>
+   　 <td>コメント一覧</td>
    　 <td>
-
+   　  <% @comments.each do |comment| %>
+   　  <%= comment.comment_content %>
+   　  <% end %>
    　 </td>
    　 </tr>
-   　</td>
     </tfoot>
    </div>
  </div>

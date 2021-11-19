@@ -14,14 +14,16 @@ Rails.application.routes.draw do
 
   scope module: :customer do
    resources :opus do
-     resource :opus_image, only: [:destroy, :show, :edit]
+     resource :opus_image, only: [:destroy, :show]
      resource :favorites, only: [:create, :destroy]
      resource :comments, only: [:create, :destroy]
   end
    resources :tags
    resources :questions do
-    resource :answer
+    resources :answers, only: [:create]
    end
+
+
    resources :customers do
     resource :friend, only: [:create, :destroy]
    end
@@ -30,7 +32,7 @@ Rails.application.routes.draw do
   end
   root :to => "customer/tops#top"
   get "/about" => "customer/tops#about"
-  get 'search' => 'posts#search'
+  get 'search' => 'opu#search'
   delete 'opud/:id' => 'opus#destroy'
   post 'calendars/:id' => 'calendar#show'
   delete 'opus/:opu_id/opus_image' => 'opus_images#destroy'

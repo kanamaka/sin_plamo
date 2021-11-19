@@ -35,6 +35,7 @@
   <th style="border:none;">
    <%= link_to '会員情報を編集する', edit_customer_path(current_customer.id), class: "btn " %><br>
    <%= link_to '作品を投稿する！', new_opu_path(current_customer.id), class: "btn " %><br>
+   <%= link_to '質問でもしてみる', new_question_path(current_customer.id), class: "btn " %>
   </th>
  </tr>
   <table id="customer-table" class="table mt-3">

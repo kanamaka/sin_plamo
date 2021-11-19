@@ -4,15 +4,21 @@
 <div class='container px-5 px-sm-0'>
  <div class='row'>
   <div class='col-md-4'>
-    <h3>作品を探す</h3>
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
-　  <%= f.text_field :keyword, value: @keyword %>
-　  <%= f.submit "検索" %>
-　  <% end %>
 　  <%= render 'layouts/mypage' %>
    </div>
   <div class='col-md-8'>
    <table class='table table-hover table-inverse width'>
+    <tr>
+      <h3>作品を探す</h3>
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+　    <%= f.text_field :keyword, value: @keyword %>
+　    <%= f.submit "検索" %>
+　    <% end %>
+     </td>
+     <td>
+      <% @opera.each do |opus| %>
+      <%= opus.name %>
+      <% end %>
     <thead width="900"><h1>投稿一覧</h1>
      <tr>
        <th style="border:none;" width="300">作品画像</th>

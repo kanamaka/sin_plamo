@@ -1,5 +1,6 @@
 class Customer::CustomersController < ApplicationController
  def show
+  @users = Customer.all
   @customer = current_customer
   @customers = Customer.find_by(params[:id])
   @opus = Opu.new

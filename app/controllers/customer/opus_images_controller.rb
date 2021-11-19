@@ -1,13 +1,13 @@
 class Customer::OpusImagesController < ApplicationController
  def show
   @customer = current_customer
-  @opus = Opu.find_by(params[:id])
+  @opus = Opu.find(params[:opu_id])
  end
 
  def destroy
-  @opu = Opu.find_by(params[:id])
+  @opu = Opu.find(params[:opu_id])
   @opus.destroy
-  redirect_to opus_path
+  redirect_to customer_path
  end
 
   private

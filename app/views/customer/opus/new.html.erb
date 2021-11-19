@@ -16,6 +16,10 @@
        <%= f.label "作品説明", class: "label" %><br>
        <%= f.text_area :opus_explanation, class: "input-text form text-comment" %>
       </p>
+      <p>
+       <%= f.text_field :tag_ids, class: "form-control input-text form", id:'tag_ids',\
+        placeholder: "作品タグをつける。複数つけるには','で区切ってください。" %>
+      </p>
      <p><%= f.file_field :opus_images_images, multiple: true %></p>
      <p><%= f.submit "作品を投稿する！", class: "submit-btn" %></p>
     </div>

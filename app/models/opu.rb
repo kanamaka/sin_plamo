@@ -10,7 +10,8 @@ class Opu < ApplicationRecord
  validates :opus_explanation, presence: true
  validates :opus_images_images, presence: true
  has_many :notifications, dependent: :destroy
-
+ has_many  :tag_relationships, dependent: :destroy
+ has_many  :tags, through: :tag_relationships
 
  def favorited_by?(customer)
    favorites.where(customer_id: customer.id).exists?
@@ -38,5 +39,12 @@ class Opu < ApplicationRecord
      notification.checked = true
   end
   notification.save if notification.valid?
+ end
+
+ def save_tags(saveopu_tags)
+    saveopu_tags.each do |new_name|
+    opu_tag = Tag.find_or_create_by(name: new_name)
+    self.tags << opu_tag
+    end
  end
 end

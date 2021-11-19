@@ -1,27 +1,11 @@
 class Customer::FriendsController < ApplicationController
- before_action :set_customer
-
- def create
-  @following = current_customer.follow(@current_customer)
-  if following.save
-  flash[:success] = 'ユーザーをフォローしました'
-  redirect_to @customer
-  else
-  flash.now[:alert] = 'ユーザーのフォローに失敗しました'
-  redirect_to @customer
+  def create
+    @other_customer = Customer.find(params[:follower])
+    current_customer.follow(@other_customer)
   end
- end
 
-def destroy
-  following = current_customer.unfollow(@customer)
-  if following.destroy
-  flash[:success] = 'ユーザーのフォローを解除しました'
-  redirect_to @customer
-  else
-  flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'
-  redirect_to @customer
+  def destroy
+    @customer = current_customer.friends.find(params[:id]).follower
+    current_customer.unfollow(params[:id])
   end
-end
-
-
 end
