@@ -1,9 +1,9 @@
 <% if opus.favorited_by?(current_customer) %>
-<%= link_to opu_favorites_path(opus), method: :delete,  class: "fa fa-thumbs-up" do %>
+<%= link_to opu_favorites_path(opus), method: :delete, class: "fa fa-thumbs-up", remote: true do %>
 <%= opus.favorites.count %>
 <% end %>
 <% else %>
-<%= link_to opu_favorites_path(opus), method: :post, class: "fa fa-thumbs-up", remote: true do  %>
+<%= link_to opu_favorites_path(opus), method: :post, class: "fa fa-thumbs-up", remote: true do %>
 <%= opus.favorites.count %>
 <% end %>
 <% end %>

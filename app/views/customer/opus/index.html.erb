@@ -10,17 +10,17 @@
    <table class='table table-hover table-inverse width'>
     <tr>
       <h3>作品を探す</h3>
-      <%= form_with url: search_path, method: :get, local: true do |f| %>
-　    <%= f.text_field :keyword, value: @keyword %>
-　    <%= f.submit "検索" %>
-　    <% end %>
+      <%= form_tag opus_path, method: :get, class: 'boards__searchForm' do %>
+      <%= select_tag :tag_ids,options_from_collection_for_select(Tag.all, :id, :name, params[:tag_ids])%>
+      <%= submit_tag "検索"%>
+    　<% end %>
      </td>
-     <td>
+     <td style="border:none;">
       <% @opera.each do |opus| %>
       <%= opus.name %>
       <% end %>
     <thead width="900"><h1>投稿一覧</h1>
-     <tr>
+     <tr style="border:none;">
        <th style="border:none;" width="300">作品画像</th>
        <th style="border:none;" width="300">タイトル</th>
        <th style="border:none;" width="300">スキ！</th>
@@ -37,15 +37,7 @@
         <% end %>
         <td style="border:none;" width="100">
          <% if opus.customer_id.to_i != current_customer.id %>
-         <% if opus.favorited_by?(current_customer) %>
-          <%= link_to opu_favorites_path(opus), method: :delete,  class: "fa fa-thumbs-up" do %>
-          <%= opus.favorites.count %>
-          <% end %>
-         <% else %>
-          <%= link_to opu_favorites_path(opus), method: :post, class: "fa fa-thumbs-up" do %>
-          <%= opus.favorites.count %>
-          <% end %>
-         <% end %>
+          <%= render "favorites", opus: opus %>
          <% end %>
         <td style="border:none;" width="300">
          <% if opus.customer_id.to_i == current_customer.id %>

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
- before_action :authenticate_customer!,except: [:top]
  def after_sign_in_path_for(resource)
   customer_path(current_customer.id)
  end

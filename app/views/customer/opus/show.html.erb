@@ -10,12 +10,11 @@
    <div class='col-md-7 offset-md-1'>
     <table>
      <tr width="900">
-      <td style="border:none;" width="300">作品名<span class="offset-md-1"><%= @opera.opus_name %></span></td>
-      <td style="border:none;" width="300">コメント<span class="offset-md-1"><%= @opera.opus_explanation %></span></td>
-      <td>
-       <% @opera.tags.each do |tag| %>
-       <%= tag.name %>
-       <% end %>
+      <td style="border:none;" width="300">作品名<span class="offset-md-1"><h2><%= @opera.opus_name %></h2></span></td>
+      <td style="border:none;" width="300">コメント<span class="offset-md-1"><h2><%= @opera.opus_explanation %></h2></span></td>
+      <td style="border:none;" width="300">作品タグ<span class="offset-md-1"><td><br><% @opera.tags.each do |tag| %><td><h2><%= tag.name %></h2></td><% end %>
+      </span>
+       </td>
       </td>
      </tr>
     </table>
@@ -27,23 +26,25 @@
         <% end %>
        </td>
      </tr>
-     <tr>
-     </tr>
      </tbody>
     <tfoot>
    　<td>
-   　  <%= form_with model: @commenter, local: true do |f| %>
-      <%= f.text_field :comment, placeholder: "素敵なコメントを" %>
-      <%= f.submit "送信する" %>
-      <% end %>
+   　<%= form_with(model: @comment, url: opu_comments_path(@customer), local: true) do |f| %>
+     <%= f.text_field :comment, placeholder: "素敵なコメントを" %>
+     <%= f.submit "送信する" %>
+     <% end %>
    　</td>
    　 <tr>
-   　 <td>コメント一覧</td>
-   　 <td>
+   　 <td>コメント一覧</td><br>
    　  <% @comments.each do |comment| %>
-   　  <%= comment.comment_content %>
+    　 <td>
+    　  <%= @customer.name %>
+    　  <%= comment.comment %>
+    　</td>
+    　<td>
+    　　 <%= @customer.name %>
+    　 </td>
    　  <% end %>
-   　 </td>
    　 </tr>
     </tfoot>
    </div>

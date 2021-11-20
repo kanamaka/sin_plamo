@@ -5,14 +5,13 @@ class Customer::OpusImagesController < ApplicationController
  end
 
  def destroy
-  @opu = Opu.find(params[:opu_id])
-  @opus.destroy
-  redirect_to customer_path
+  params[:image_id].each do |image|
+   @opu = OpusImage.find(image)
+   @opu.destroy
+  end
+  redirect_to opus_path
  end
 
   private
 
-  def opus_params
-    params.require(:opu).permit(:opus_name, :opus_explanation, :opus_image_id, opus_images_images: [])
-  end
 end

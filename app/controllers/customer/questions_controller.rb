@@ -6,6 +6,8 @@ end
 def show
  @question = Question.find(params[:id])
  @answer = Answer.new
+ @opera = Opu.find(params[:id])
+ @customer = current_customer
 end
 
 def new
@@ -25,7 +27,6 @@ end
  def update
   @question = Question.find(params[:id])
    if @question.update(question_params)
-    flash[:notice] = "編集しました"
     redirect_to　questions_path(@question.id)
    else
     render :new
