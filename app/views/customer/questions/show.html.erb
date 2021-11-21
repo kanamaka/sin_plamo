@@ -23,9 +23,9 @@
     <tr>
      <td>
       <%= answer.content %>
+       <%=link_to "削除", question_answer_path(answer.id), method: :delete %>
      </td>
      <td>
-       <%= @customer.name %>
      </td>
     </tr>
     <% end %>

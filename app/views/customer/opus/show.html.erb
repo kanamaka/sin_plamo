@@ -3,11 +3,11 @@
 </header>
  <div class='container px-5 px-sm-0'>
  <div class='row'>
-  <div class='col-md-4'>
+  <div class='col-md-3.5'>
    <h2 class="plo_name"><%= @customer.name %>さんのプロフ</h2>
    <%= render 'layouts/mypage2opu' %>
   </div>
-   <div class='col-md-7 offset-md-1'>
+   <div class='col-md-5'>
     <table>
      <tr width="900">
       <td style="border:none;" width="300">作品名<span class="offset-md-1"><h2><%= @opera.opus_name %></h2></span></td>
@@ -27,28 +27,25 @@
        </td>
      </tr>
      </tbody>
-    <tfoot>
-   　<td>
-   　<%= form_with(model: @comment, url: opu_comments_path(@customer), local: true) do |f| %>
-     <%= f.text_field :comment, placeholder: "素敵なコメントを" %>
-     <%= f.submit "送信する" %>
-     <% end %>
-   　</td>
-   　 <tr>
-   　 <td>コメント一覧</td><br>
-   　  <% @comments.each do |comment| %>
-    　 <td>
-    　  <%= @customer.name %>
-    　  <%= comment.comment %>
-    　</td>
-    　<td>
-    　　 <%= @customer.name %>
-    　 </td>
-   　  <% end %>
-   　 </tr>
-    </tfoot>
    </div>
- </div>
+     <div class='col-md-3.5'>
+      <% if @opera.customer_id.to_i != current_customer.id %>
+   　  <%= form_with(model: @comment, url: opu_comments_path(@customer), local: true) do |f| %>
+      <%= f.text_field :comment, placeholder: "素敵なコメントを" %>
+      <%= f.submit "送信する" %>
+      <% end %>
+      <% end %>
+      コメント一覧
+   　  <% @comments.each do |comment| %>
+   　  <div>
+   　    <%= @customer.name %>
+   　  </div>
+    　 <%= comment.comment %><br>
+    　 <%=link_to "削除", opu_comments_path(comment.id), method: :delete %>
+   　  <% end %>
+     </div>
+   　 </tr>
+  </div>
 </div>
 <footer>
  <%= render 'layouts/footer' %>

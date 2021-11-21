@@ -6,8 +6,14 @@ class Customer::CommentsController < ApplicationController
   redirect_back(fallback_location: root_path)
  end
 
+ def destroy
+  @comment = Comment.find(params[:opu_id])
+  @comment.destroy
+  redirect_to request.referer
+ end
+
   private
   def comments_params
-    params.require(:comment).permit(:comment, :opu_id)
+    params.require(:comment).permit(:comment, :opu_id, :comment_id)
   end
 end

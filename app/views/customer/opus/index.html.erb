@@ -35,7 +35,7 @@
         <%= attachment_image_tag(opus.opus_images[0], :image, class: "sizee") %>
         <td style="border:none;" width="300"><%= opus.opus_name %></td>
         <% end %>
-        <td style="border:none;" width="100">
+        <td id="favorite_buttons_<%= opus.id %>", style="border:none;" width="100">
          <% if opus.customer_id.to_i != current_customer.id %>
           <%= render "favorites", opus: opus %>
          <% end %>

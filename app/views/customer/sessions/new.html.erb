@@ -1,9 +1,9 @@
 <header>
  <%= render 'layouts/header' %>
 </header>
-<h2>ログインする</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="form-wrapper">
+  <h2>ログインする</h2>
+ <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -25,9 +25,8 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
-
 <%= render "customer/shared/links" %>
+</div>
 <footer>
  <%= render 'layouts/footer' %>
 </footer>
