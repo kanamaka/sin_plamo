@@ -1,7 +1,7 @@
-# FactoryBot.define do
-#   factory :post do
-#     opus_name { Faker::Lorem.characters(number:20) }
-#     opus_explanation { Faker::Lorem.characters(number:20) }
-#     customer
-#   end
-# end
+FactoryBot.define do
+ factory :opu do
+  opus_name { test }
+  opus_explanation { test }
+  opus_image_id { about.jpg }
+ end
+end
