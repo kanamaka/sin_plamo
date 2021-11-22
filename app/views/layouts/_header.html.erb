@@ -11,7 +11,7 @@
    <li style="list-style: none;"><%= link_to opus_path do %><%= image_tag 'penguin.jpg', class: "size"%><% end %></li>
    <li style="list-style: none;"><%= link_to calendar_path(current_customer.id) do %><%= image_tag 'calendar.jpg', class: "size"%><% end %></li>
    <li style="list-style: none;"><%= link_to new_opu_path(current_customer.id) do %><%= image_tag 'toukou.jpg', class: "size"%><% end %></li>
-   <li style="list-style: none;"><%= link_to questions_path do %><%= image_tag 'question.jpg', class: "size"%><% end %></li>
+   <li style="list-style: none;"><%= link_to questions_path do %><%= image_tag 'questions.jpg', class: "size"%><% end %></li>
    <li style="list-style: none;"><%= link_to destroy_customer_session_path, method: :delete do%><%= image_tag 'logout.jpg', class: "size"%><% end %></li>
  <% else %>
    <li style="list-style: none;"><%= link_to root_path do %><%= image_tag 'home.jpg', class: "size"%><% end %></li>

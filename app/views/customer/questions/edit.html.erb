@@ -1,0 +1,30 @@
+<header>
+ <%= render 'layouts/header' %>
+</header>
+ <div class="container">
+   <div class="row">
+     <%= form_with model: @question, local:true do |f| %>
+      <table>
+       <tr>
+         <td style="border:none;">
+          <%= f.label "作品名" %><br>
+          <%= f.text_area :title %>
+         </td>
+        </tr>
+        <tr>
+         <td style="border:none;">
+          <%= f.label "作品説明" %><br>
+          <%= f.text_area :content %>
+         </td>
+        <tr>
+         <td style="border:none;">
+          <%= f.submit "作品を修正する！" %>
+         </td>
+        </tr>
+      </table>
+     <% end %>
+   </div>
+ </div>
+<footer>
+ <%= render 'layouts/footer' %>
+</footer>

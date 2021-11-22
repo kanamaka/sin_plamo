@@ -6,7 +6,7 @@ class Opu < ApplicationRecord
  has_many :favorites, dependent: :destroy
  has_many :comments
  has_many :favorited_customer, through: :favorites, source: :customer
- validates :opus_name, presence: true
+ validates :opus_name, presence: true, length: {in: 1..30 }
  validates :opus_explanation, presence: true
  validates :opus_images_images, presence: true
  has_many :notifications, dependent: :destroy

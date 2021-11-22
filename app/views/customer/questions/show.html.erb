@@ -1,40 +1,32 @@
 <header>
  <%= render 'layouts/header' %>
 </header>
-<table>
- <tr class="container_new">
-  <td><h2><%= @question.title %></h2></td>
-  <td class="row">
-  <tr><td class="row"><%= @question.content %></td></tr>
-  <td>
-   <%= form_with(model: [@question, @answer], local: true) do |f| %>
-   <%= f.label :content, "回答" %><br>
-   <%= f.text_area :content, class: "input-text form text-comment" %><br>
-   <%= f.submit "回答する！", class: "submit-btn" %>
-   <% end %>
-  </td>
-  <tr>
-   <td>
-    回答一覧
-   </td>
-  <tr>
-   <td>
-    <% @question.answers.each do |answer| %>
+ <div class="container px-5 px-sm-0">
+  <div class="row">
+   <div class="col-md-5 mt-5">
+    <tr><td><h2><%= @question.title %></h2></td></tr>
+    <tr><td><%= @question.content %></td></tr>
     <tr>
      <td>
-      <%= answer.content %>
-       <%=link_to "削除", question_answer_path(answer.id), method: :delete %>
-     </td>
-     <td>
+      <%= form_with(model: [@question, @answer], local: true) do |f| %>
+      <%= f.label :content, "回答" %><br>
+      <%= f.text_area :content, class: "input-text form text-comments" %><br>
+      <%= f.submit "回答する！", class: "submit-btn" %>
+      <% end %>
      </td>
     </tr>
+  </div>
+  <div class='col-md-6'>
+    <td>回答一覧</td>
+    <% @question.answers.each do |answer| %><br>
+    <td>
+     <%= answer.content %>
+     <%=link_to "削除", question_answer_path(answer.id), method: :delete %>
+    </td>
     <% end %>
-   </td>
-  </tr>
-  </tr>
-  </td>
- </tr>
-</table>
+   </div>
+  </div>
+ </div>
 <footer>
  <%= render 'layouts/footer' %>
 </footer>

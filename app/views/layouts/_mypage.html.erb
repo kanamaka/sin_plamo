@@ -1,7 +1,7 @@
-<div>
-  <%= image_tag ("logo.jpg"), class: "sizen" %>
-</div>
  <table>
+ <td>
+ <%= attachment_image_tag @customer, :profile_image, class: "sizene" %>
+ </td>
  <tr>
   <td style="border:none;" class="table">名前</td><br>
   <td style="border:none;" class="table"><%= @customer.name %></td><br>

@@ -1,8 +1,8 @@
 <header>
  <%= render 'layouts/header' %>
 </header>
- <div class="row mt-5" style="width: 100%; margin-bottom:300px">
-  <table style="width: 800px; margin:0 auto;">
+ <div class="row mt-5">
+  <table style="width: 600px; margin:1px auto;">
    <thead>
     <td><h2>質問一覧</h2></td>
     <tr>
@@ -19,6 +19,10 @@
      <%= question.content %><br>
     </td>
     <td>
+     <% if question.customer_id.to_i == current_customer.id %>
+     <%= link_to "修正！", edit_question_path(question.id)%>
+     <%= link_to "削除しちゃう？", question_path(question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+     <% end %>
     </td>
     <% end %>
     </tr>
