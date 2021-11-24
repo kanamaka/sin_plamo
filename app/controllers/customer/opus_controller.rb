@@ -12,7 +12,7 @@ class Customer::OpusController < ApplicationController
  end
 
  def index
-  @op_ranks = Opu.find(Favorite.group(:opu_id).order('count(opu_id) desc').limit(3).pluck(:opu_id))
+  @all_ranks = Opu.find(Favorite.group(:opu_id).order('count(opu_id) desc').limit(3).pluck(:opu_id))
   @opera = Opu.all
   if params[:tag_ids]
    #[

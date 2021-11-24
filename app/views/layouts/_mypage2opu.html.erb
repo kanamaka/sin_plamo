@@ -11,8 +11,12 @@
   <td style="border:none;" class="table"><%= @customer.profile %></td>
  </tr>
  <tr>
-  <td style="border:none;" class="table">フレンド</td>
-  <td style="border:none;" class="table"></td>
+  <td style="border:none;" class="table">フォロー数</td>
+  <td style="border:none;" class="table"><%= @customer.followings.count %></td>
+ </tr>
+ <tr>
+  <td style="border:none;" class="table">フォロワー数</td>
+  <td style="border:none;" class="table"><%= @customer.followers.count %>
  </tr>
  <tr>
  </tr>

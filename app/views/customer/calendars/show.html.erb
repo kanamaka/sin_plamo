@@ -13,7 +13,7 @@
   <p><%= f.select :parts, [["head", "head"], ["body", "body"], ["arm", "arm"], ["waist", "waist"], ["leg", "leg"],["backpack", "bakcpack"],["wepon", "wepon"],["file", "file"],["painting", "painting"],["surfacer", "surfacer"]], include_blank: "選択して下さい" %></p>
   <label for="start_time">予定日</label>
   <p><%= f.datetime_select :start_time%></p>
-  <%= f.submit "予定を入れる", class: "btn btn-sm btn-hachiss" %>
+  <%= image_submit_tag("yotri.jpg") %>
   <% end %>
  </div>
 <div class="col-md-9">
@@ -45,8 +45,8 @@
       <td><%= calendar.content %></td>
       <td><%= calendar.parts %></td>
 	　<td><%= calendar.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-	　<td><%=link_to "予定は未定" , edit_calendar_path(calendar) %></td>
-	　<td><%=link_to "削除",calendar_path(calendar) , method: :delete , data: {confirm:"削除しますか"} %></td>
+	　<td><%=link_to edit_calendar_path(calendar) do %><%= image_tag 'syuusei.jpg' %><% end %></td>
+	　<td><%=link_to calendar_path(calendar) , method: :delete , data: {confirm:"削除しますか"}  do %><%= image_tag 'sakuzyo.jpg' %><% end %></td>
      </tr>
     </tbody>
    <% end %>

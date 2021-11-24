@@ -28,8 +28,8 @@
         <%= attachment_image_tag(opus.opus_images[0], :image, class: "size") %>
         <% end %>
         <td style="border:none;" width="300"><%= opus.opus_name %></td>
-        <td style="border:none;" width="300"><%= link_to "修正！", edit_opu_path(opus.id), class: "btn  btn-block" %></td>
-        <td style="border:none;" width="300"><%= link_to "削除しちゃう？", opu_path(opus.id), method: :delete, data: {confirm: "本当に削除しますか？"},  class: "btn btn-block" %></td>
+        <td style="border:none;" width="300"><%= link_to edit_opu_path(opus.id) do %><%= image_tag 'syuusei.jpg' %><% end %></td>
+        <td style="border:none;" width="300"><%= link_to opu_path(opus.id), method: :delete, data: {confirm: "本当に削除しますか？"} do %><%= image_tag 'sakuzyo.jpg' %><% end %></td>
        </td>
       </tr>
       <% end %>

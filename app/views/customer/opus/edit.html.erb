@@ -2,24 +2,18 @@
  <%= render 'layouts/header' %>
 </header>
  <div class="container">
-  <div class="row">
    <%= form_with model: @opu, local:true do |f| %>
       <table>
         <tr>
-         <td style="border:none;">
+         <td style="border:none;" class="cp_iptxt">
           <%= f.label "作品名" %><br>
-          <%= f.text_area :opus_name %>
+          <%= f.text_field :opus_name, type: "tex" %>
          </td>
         </tr>
         <tr>
          <td style="border:none;">
           <%= f.label "作品説明" %><br>
-          <%= f.text_area :opus_explanation %>
-         </td>
-        </tr>
-        <tr>
-         <td>
-          
+          <%= f.text_area :opus_explanation, class: "area  text-comments" %>
          </td>
         </tr>
         <tr>
@@ -35,12 +29,11 @@
         </tr>
         <tr>
          <td style="border:none;">
-          <%= f.submit "作品を修正する！" %>
+          <%= image_submit_tag("syusei.jpg") %>
          </td>
         </tr>
      <% end %>
    </table>
-  </div>
  </div>
 <footer>
  <%= render 'layouts/footer' %>
