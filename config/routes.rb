@@ -26,9 +26,10 @@ Rails.application.routes.draw do
 
    resources :customers do
     resource :friend, only: [:create, :destroy]
+    get 'followings' => 'friends#followings', as: 'followings'
+    get 'followers' => 'friends#followers', as: 'followers'
    end
    resources :calendars
-   resources :notifications, only: :index
   end
   root :to => "customer/tops#top"
   get "/about" => "customer/tops#about"

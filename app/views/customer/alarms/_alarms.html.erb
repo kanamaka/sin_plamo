@@ -1,0 +1,25 @@
+<% customer = alarm.customer %>
+<% customer = alarm.customer %>
+<div class="col-md-6.mx-auto">
+ <%= link_to customer_path(customer) do %>
+  <% attachment_image_tag(customer).to_s, class: "icon_mini" %>
+   <%= customer.name %>
+    <%= 'さんが' %>
+      <% case alarms.action %>
+       <% when 'friend' then %>
+        <%= "あなたをフォローしました" %>
+        <% when 'favorite' then %>
+        <%= link_to 'あなたの投稿', alarm.opu, style: "font-weight: bold;" %>
+        <%= "にいいねしました" %>
+        <% when 'comment' then %>
+        <% if alarm.opu.customer == customer.id %>
+        <%= link_to "あなたの投稿", alarm.opu, style: "font-weight: bold;" %>
+        <% else %>
+        <%= link_to opu_path(alarm.opu) do %>
+        <%= attachment_image_tag(alarm.opu.customer).to_s, class: "icon_mini" %>
+        <%= alarm.opu.customer.name + 'さんの投稿' %>
+        <%= "にコメントしました" %>
+        <div class="text-muted.mb-0">
+        <%= Comment.find_by(id: alarm.comment_id)&.comment %>
+        </div>
+  </div>

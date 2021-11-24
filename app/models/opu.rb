@@ -9,9 +9,9 @@ class Opu < ApplicationRecord
  validates :opus_name, presence: true, length: {in: 1..30 }
  validates :opus_explanation, presence: true
  validates :opus_images_images, presence: true
- has_many :notifications, dependent: :destroy
- has_many  :tag_relationships, dependent: :destroy
- has_many  :tags, through: :tag_relationships
+ has_many :alarm, dependent: :destroy
+ has_many :tag_relationships, dependent: :destroy
+ has_many :tags, through: :tag_relationships
 
  def favorited_by?(customer)
    favorites.where(customer_id: customer.id).exists?
@@ -20,25 +20,40 @@ class Opu < ApplicationRecord
   where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
  end
 
- def create_notification_comment!(current_customer, comment_id)
-   temp_ids = Comment.select(:customer_id).where(opu_id: id).where.not(customer_id: current_customer.id).distinct
-   temp_ids.each do |temp_id|
-   save_notification_comment!(current_customer, comment_id, temp_id['customer_id'])
-   end
-   save_notification_comment!(current_customer, comment_id, customer_id) if temp_ids.blank?
+ def create_alarm_favorite!(current_customer)
+  temp = alarm.where(["customer_id = ? and customer_id = ? and opu_id = ? and action = ? ", current_customer.id, customer_id, id, 'favorite'])
+  if temp.blank?
+  alarm = current_customer.active_alarms.new(
+  opu_id: id,
+  customer_id: customer_id,
+  action: 'favorite'
+    )
+  if alarm.customer_id == alarm.customer_id
+   alarm.checked = true
+  end
+   alarm.save if alarm.valid?
+  end
  end
 
- def save_notification_comment!(current_customer, comment_id, customer_id)
-   notification = current_customer.active_notifications.new(
+ def create_alarm_comment!(current_customer, comment_id)
+   temp_ids = Comment.select(:customer_id).where(opu_id: id).where.not(customer_id: current_customer.id).distinct
+   temp_ids.each do |temp_id|
+   save_alarm_comment!(current_customer, comment_id, temp_id['customer_id'])
+   end
+   save_alarm_comment!(current_customer, comment_id, customer_id) if temp_ids.blank?
+ end
+
+ def save_alarm_comment!(current_customer, comment_id, customer_id)
+   alarm = current_customer.active_alarm.new(
    opu_id: id,
    comment_id: comment_id,
    customer_id: customer_id,
    action: 'comment'
    )
-  if notification.customer_id == notification.customer_id
-     notification.checked = true
+  if alarm.customer_id == alarm.customer_id
+     alarm.checked = true
   end
-  notification.save if notification.valid?
+  alarm.save if alarm.valid?
  end
 
  def save_tags(saveopu_tags)

@@ -29,6 +29,7 @@
     </thead>
     <tbody width="1000">
      <tr>
+     <!--<#% @opera_ranks.opera.each do |opus| %>-->
       <% @opera.each do |opus| %>
        <td style="border:none;" width="300">
         <%= link_to opu_path(opus.id) do %>
@@ -43,13 +44,14 @@
          <% if opus.customer_id.to_i == current_customer.id %>
          <%= link_to "修正！", edit_opu_path(opus.id), class: "btn btn-success btn-block" %>
          <%= link_to "削除しちゃう？", opu_path(opus.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-success btn-block" %>
-         <% end %>
+        <% end %>
         </td>
        </td>
       </td>
     </tr>
    </tbody>
      <% end %>
+     <!--<#% end %>-->
    </table>
   </div>
  </div>

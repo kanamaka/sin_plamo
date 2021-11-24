@@ -9,13 +9,10 @@
   </div>
    <div class='col-md-5'>
     <table>
-     <tr width="900">
-      <td style="border:none;" width="300">作品名<span class="offset-md-1"><h2><%= @opera.opus_name %></h2></span></td>
-      <td style="border:none;" width="300">コメント<span class="offset-md-1"><h2><%= @opera.opus_explanation %></h2></span></td>
-      <td style="border:none;" width="300">作品タグ<span class="offset-md-1"><td><br><% @opera.tags.each do |tag| %><td><h2><%= tag.name %></h2></td><% end %>
-      </span>
-       </td>
-      </td>
+     <tr>
+      <td>作品名<h2><%= @opera.opus_name %></h2></td>
+      <td style="border:none;">コメント<%= @opera.opus_explanation %></td>
+      <td>作品タグ</td><td><% @opera.tags.each do |tag| %><%= tag.name %><% end %></td>
      </tr>
     </table>
     <tbody>

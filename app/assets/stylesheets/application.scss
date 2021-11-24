@@ -44,6 +44,11 @@
   width: 50%;
  }
 
+ .tabled {
+  line-height: 5px;
+ }
+
+
  .link {
   fontcolor: #f0ffff;
  }
@@ -61,7 +66,7 @@
  .sizen {
   width: 30%;
  }
- 
+
  .sizene {
   width: 80%;
  }
@@ -110,16 +115,7 @@ $grey: #ccc;
   margin: auto;
   background-color: $white;
 }
-.row {
-  width: 100%;
-  margin: 0 0 1em 0;
-  &.header {
-    padding: 1.5em 2.5em;
-    border-bottom: 1px solid $grey;
-    background: url(https://www.shutoko.jp/ss/shutokodeikou/special/yakei/img/p013_main-960x450.jpg) left -80px;
-    color: $white;
-  }
-}
+
 .pull-right {
   float: right;
 }
@@ -144,6 +140,32 @@ h4 {
  background: white;
 }
 
+.headers {
+ background: white;
+}
+
+.row {
+  width: 100%;
+  margin: 0 0 1em 0;
+  &.header {
+    padding: 1.5em 2.5em;
+    border-bottom: 1px solid $grey;
+    background: url(https://cdn.pixabay.com/photo/2020/09/09/02/15/penguins-5556289_960_720.jpg) left -850px;
+    color: #555555;
+  }
+}
+
+.row {
+  width: 100%;
+  margin: 0 0 1em 0;
+  &.headers {
+    padding: 1.5em 2.5em;
+    border-bottom: 1px solid $grey;
+    background: url(https://cdn.pixabay.com/photo/2020/09/09/02/15/penguins-5556289_960_720.jpg) left -930px;
+    color: #555555;
+  }
+}
+
 
 .text-comments {
  width: 500px;
@@ -154,7 +176,7 @@ h4 {
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  
+
 }
 
 .formall {
@@ -249,4 +271,10 @@ form {
 .formiteme input:focus {
   border-bottom: 2px solid #c0c0c0;
   outline: none;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30em
 }

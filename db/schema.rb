@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_19_165823) do
+ActiveRecord::Schema.define(version: 2021_11_24_115701) do
+
+  create_table "alarms", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "opu_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "answers", force: :cascade do |t|
     t.integer "customer_id"
@@ -74,19 +84,10 @@ ActiveRecord::Schema.define(version: 2021_11_19_165823) do
     t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "followed_id"
     t.index ["customer_id", "follower_id"], name: "index_friends_on_customer_id_and_follower_id", unique: true
     t.index ["customer_id"], name: "index_friends_on_customer_id"
     t.index ["follower_id"], name: "index_friends_on_follower_id"
-  end
-
-  create_table "notifications", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "opu_id"
-    t.integer "comment_id"
-    t.string "favorites", default: "", null: false
-    t.boolean "checked", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "opus", force: :cascade do |t|

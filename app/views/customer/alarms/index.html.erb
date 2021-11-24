@@ -1,0 +1,13 @@
+<header>
+ <%= render 'layouts/header' %>
+</header>
+<% alarms = @alarms.where.not(customer_id: current_customer.id) %>
+<% if alarms.exists? %>
+ <%= render "alarms/alarms" %>
+ <%= paginate alarms %>
+<% else %>
+<div>通知はとくにないよ</div>
+<% end %>
+<footer>
+ <%= render 'layouts/footer' %>
+</footer>

@@ -12,15 +12,19 @@
  </tr>
  <tr>
   <td style="border:none;" class="table">フォロー数</td>
-  <td style="border:none;" class="table"><%= @customer.friends.count %></td>
+  <td style="border:none;" class="table"><%= @customer.followings.count %></td>
+ </tr>
+ <tr>
+  <td style="border:none;" class="table">フォロワー数</td>
+  <td style="border:none;" class="table"><%= @customer.followers.count %>
  </tr>
  <tr>
   <td>
    <% unless current_customer == @customer %>
     <% if current_customer.following?(@customer) %>
-    <%= button_to 'フォロー解除', customer_friend_path(current_customer.friends.find_by(follower: @customer)), method: :delete, class: "btn " %>
+    <%= link_to "フォロー外す", customer_friend_path(@customer.id), method: :delete %>
     <% else %>
-    <%= button_to 'フォロー', customer_friend_path(@customer), class: "btn " %>
+    <%= link_to "フォローする", customer_friend_path(@customer.id), method: :post %>
     <% end %>
    <% end %>
   </td>
