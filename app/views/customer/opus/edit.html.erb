@@ -18,13 +18,12 @@
         </tr>
         <tr>
          <td>
-         <%= link_to "画像を削除しに行く", opu_opus_image_path(@opu) %>
+         <%= link_to opu_opus_image_path(@opu) do %><%= image_tag 'gazousaku.jpg' %><% end %></li>
          </td>
         </tr>
         <tr>
          <td style="border:none;">
-         <%= f.label "画像を追加する" %><br>
-         <%= f.attachment_field :image, multiple: true %>
+         <%= f.attachment_field :image, multiple: true, class: "none" %>
          </td>
         </tr>
         <tr>

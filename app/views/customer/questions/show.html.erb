@@ -11,7 +11,7 @@
       <%= form_with(model: [@question, @answer], local: true) do |f| %>
       <%= f.label :content, "回答" %><br>
       <%= f.text_area :content, class: "input-text form text-comments" %><br>
-      <%= f.submit "回答する！", class: "submit-btn" %>
+      <%= f.submit do %><%= image_tag 'kaitou.jpg' %><% end %>
       <% end %>
      </td>
     </tr>

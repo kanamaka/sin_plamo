@@ -20,8 +20,8 @@
     </td>
     <td>
      <% if question.customer_id.to_i == current_customer.id %>
-     <%= link_to "修正！", edit_question_path(question.id)%>
-     <%= link_to "削除しちゃう？", question_path(question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+     <%= link_to edit_question_path(question.id) do %><%= image_tag 'syuusei.jpg' %><% end %>
+     <%= link_to question_path(question.id), method: :delete, data: {confirm: "本当に削除しますか？"} do %><%= image_tag 'sakuzyo.jpg' %><% end %>
      <% end %>
     </td>
     <% end %>
