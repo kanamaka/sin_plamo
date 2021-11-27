@@ -64,11 +64,14 @@
  }
 
  .sizen {
-  width: 30%;
+  width: 180px;
+  height: 180px;
  }
+
 
  .sizene {
   width: 80%;
+  height: 80%;
  }
 
  .plo_name {
@@ -81,12 +84,16 @@
 
 .ataoka {
  width: 30%;
-  height: 30%;
+ height: 30%;
 }
 
 .sizee {
   width: 50%;
   height: 50%;
+}
+
+.table-top {
+  margin: 0 auto;
 }
 
 $white: #fff;
@@ -310,4 +317,21 @@ form {
 
 .none {
   background-image: url("assets/images/gazousentaku.jpg");
+}
+
+
+.border1 {
+  width: 100px;
+}
+
+.border2 {
+  width: 100px;
+}
+
+.border3 {
+  width: 100px;
+}
+
+.border4 {
+  width: 150px;
 }

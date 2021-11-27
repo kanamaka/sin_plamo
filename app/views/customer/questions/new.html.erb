@@ -1,17 +1,17 @@
 <header>
  <%= render 'layouts/header' %>
 </header>
-<% if @question.errors.any? %>
-  <%= @question.errors.count %>件のエラーが発生しました
-  <% @question.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
 <div class='container'>
  <div class='row header'>
    <h2>質問する</h2>
  </div>
-  <diV>
+  <div>
+   <% if @question.errors.any? %>
+   <li><%= @question.errors.count %>件のエラーが発生しました</li><br>
+   <% @question.errors.full_messages.each do |message| %>
+    <%= message %>
+   <% end %>
+   <% end %>
    <%= form_with(model: @question, local: true) do |f| %>
     <p class="left">
      <%= f.label :title, "タイトル" %><br>

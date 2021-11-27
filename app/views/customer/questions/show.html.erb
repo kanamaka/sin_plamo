@@ -11,7 +11,7 @@
       <%= form_with(model: [@question, @answer], local: true) do |f| %>
       <%= f.label :content, "回答" %><br>
       <%= f.text_area :content, class: "input-text form text-comments" %><br>
-      <%= f.submit do %><%= image_tag 'kaitou.jpg' %><% end %>
+      <%= image_submit_tag("kaitou.jpg") %>
       <% end %>
      </td>
     </tr>
@@ -21,7 +21,9 @@
     <% @question.answers.each do |answer| %><br>
     <td>
      <%= answer.content %>
+     <% if answer.customer_id.to_i == current_customer.id %>
      <%=link_to "削除", question_answer_path(answer.id), method: :delete %>
+     <% end %>
     </td>
     <% end %>
    </div>

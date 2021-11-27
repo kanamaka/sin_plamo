@@ -35,7 +35,7 @@ class Customer::CalendarsController < ApplicationController
  def destroy
   @calendar = Calendar.find(params[:id])
   @calendar.destroy
-  redirect_to calendar_path(params[:id])
+  redirect_back(fallback_location: root_path)
  end
 
  def ensure_correct_customer

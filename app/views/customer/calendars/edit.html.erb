@@ -2,6 +2,12 @@
  <%= render 'layouts/header' %>
 </header>
  <div class="container-fluid">
+   <% if @calendar.errors.any? %>
+  　<%= @calendar.errors.count %>件のエラーが発生しました</li><br>
+  　<% @calendar.errors.full_messages.each do |message| %>
+  　<%= message %>
+  　<% end %>
+ 　<% end %>
   <h2 class="section-top"><span class="fas fa-robot"></span>作る予定を変える!<span class="fas fa-robot"></span></h2>
  <div class="col-md-3 col-sm-12 col-xs-12">
  <%= form_with model: @calendar, local: true do |f| %>
@@ -13,7 +19,7 @@
   <p><%= f.select :parts, [["head", "head"], ["body", "body"], ["arm", "arm"], ["waist", "waist"], ["leg", "leg"],["backpack", "bakcpack"],["wepon", "wepon"],["file", "file"],["painting", "painting"],["surfacer", "surfacer"]], include_blank: "選択して下さい" %></p>
   <label for="start_time">予定日</label>
   <p><%= f.datetime_select :start_time%></p>
-  <%= f.submit "予定を変更", class: "btn btn-sm btn-hachiss" %>
+  <%= image_submit_tag("syuusei.jpg") %>
  <% end %>
  </div>
  </div>

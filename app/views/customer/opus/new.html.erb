@@ -7,6 +7,12 @@
     <h4>あなただけの素敵な作品を投稿しよう！</h4>
   </div>
   <div>
+   <% if @opus.errors.any? %>
+   <%= @opus.errors.count %>件のエラーが発生しました
+   <% @opus.errors.full_messages.each do |message| %>
+    <%= message %>
+   <% end %>
+   <% end %>
    <%= form_with model: @opus, local:true do |f| %>
     <div>
       <p class="left">

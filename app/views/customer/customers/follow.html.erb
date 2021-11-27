@@ -1,0 +1,33 @@
+<header>
+ <%= render 'layouts/header' %>
+</header>
+<div class='container px-5 px-sm-0'>
+ <div class='row'>
+   <div class='col-md-4'>
+    <h2 class="plo_name">登録情報</h2>
+    <%= render 'layouts/mypage' %>
+   </div>
+   <div class='col-md-7 offset-md-1'>
+    <table>
+     <h2><%= @customer.name %>さんのフォロー一覧</h2>
+     <thead>
+     <tr width="900">
+      <td style="border:none;" width="300">プロフィール画像</td>
+      <td style="border:none;" width="300">おなまえ</td>
+     </tr>
+    </thead>
+    <tbody>
+      <% @customerss.each do |customer| %>
+     <tr>
+      <td><%= attachment_image_tag customer,:profile_image,fallback: " ", size: "100x100" %></td>
+      <td><%= customer.name %></td>
+     </tr>
+      <% end %>
+    </tbody>
+    </table>
+   </div>
+ </div>
+</div>
+<footer>
+ <%= render 'layouts/footer' %>
+</footer>

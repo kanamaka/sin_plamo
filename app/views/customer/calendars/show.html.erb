@@ -5,6 +5,12 @@
  <h2 class="section-top"><span class="fas fa-robot" aria-hidden="true"></span>作る予定を建てる！</h2>
  <div class="col-md-3">
   <%= form_with(model: @calendar, local: true) do |f| %>
+  <!--<% if @calendar.errors.any? %>-->
+  <!-- <%= @calendar.errors.count %>件のエラーが発生しました-->
+  <!-- <% @calendar.errors.full_messages.each do |message| %>-->
+  <!--  <%= message %>-->
+  <!-- <% end %>-->
+  <!--<% end %>-->
   <label for="menu">タイトル</label>
   <p><%= f.text_field :title %></p>
   <label for="menu">内容</label>
@@ -26,13 +32,13 @@
    <% end %>
   <% end %>
  <% end %>
-  <table class="calendar table table-bordered">
+  <table class="calendar table-bordered">
    <thead>
     <tr>
-	 <th>タイトル</th>
-	 <th>内容</th>
-	 <th>箇所</th>
-	 <th>予定日</th>
+	 <th class="border1">タイトル</th>
+	 <th class="border2">内容</th>
+	 <th class="border3">箇所</th>
+	 <th class="border4">予定日</th>
 	 <th></th>
 	 <th></th>
     </tr>

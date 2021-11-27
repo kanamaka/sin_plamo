@@ -9,6 +9,10 @@ class Customer::CustomersController < ApplicationController
  end
 
  def index
+  @opu_ranks = Opu.find(Favorite.group(:opu_id).order('count(opu_id) desc').limit(3).pluck(:opu_id))
+  @opera = Opu.all
+  @customer = current_customer
+  @customers = Customer.find_by(params[:id])
  end
 
  def new
@@ -31,6 +35,23 @@ class Customer::CustomersController < ApplicationController
      render :edit
     end
  end
+
+ def follower
+  @users = Customer.all
+  @customer = current_customer
+  @customers = Customer.find_by(params[:id])
+  customer = Customer.find(params[:customer_id])
+  @customerss = customer.followings
+ end
+
+ def follow
+  @users = Customer.all
+  @customer = current_customer
+  @customers = Customer.find_by(params[:id])
+  customer = Customer.find(params[:customer_id])
+  @customerss = customer.followers
+ end
+
 
 
 private

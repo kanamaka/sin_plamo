@@ -12,7 +12,7 @@ class Customer::OpusController < ApplicationController
  end
 
  def index
-  @all_ranks = Opu.find(Favorite.group(:opu_id).order('count(opu_id) desc').limit(3).pluck(:opu_id))
+  @opu_ranks = Opu.find(Favorite.group(:opu_id).order('count(opu_id) desc').limit(3).pluck(:opu_id))
   @opera = Opu.all
   if params[:tag_ids]
    #[
@@ -32,7 +32,6 @@ class Customer::OpusController < ApplicationController
   #画像作成ブロック
   @opus = Opu.new(opus_params)
   @opus.customer_id = current_customer.id
-  @opus.save
   if params[:opu][:image].present?
    params[:opu][:image].shift
    params[:opu][:image].each do |image|
@@ -64,7 +63,11 @@ class Customer::OpusController < ApplicationController
     #redirect_back(fallback_location: root_path)
    #end
   #end
-  redirect_to customer_path(current_customer)
+  if @opus.save
+   redirect_to customer_path(current_customer)
+  else
+   render :new
+  end
  end
 
  def edit
@@ -87,7 +90,7 @@ class Customer::OpusController < ApplicationController
     end
    redirect_to opus_path
   else
-   render :edit
+   
   end
  end
 

@@ -31,7 +31,7 @@ end
    if @question.update(question_params)
     redirect_to questions_path
    else
-    render :new
+    redirect_to request.referer
    end
  end
 

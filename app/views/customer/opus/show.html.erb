@@ -5,14 +5,20 @@
  <div class='row'>
   <div class='col-md-3.5'>
    <h2 class="plo_name"><%= @customer.name %>さんのプロフ</h2>
-   <%= render 'layouts/mypage2opu' %>
+   <%= render 'layouts/mypage'%>
   </div>
    <div class='col-md-5'>
     <table>
      <tr>
       <td>作品名<h2><%= @opera.opus_name %></h2></td>
-      <td style="border:none;">コメント<%= @opera.opus_explanation %></td>
-      <td>作品タグ</td><td><% @opera.tags.each do |tag| %><%= tag.name %><% end %></td>
+      <tr>
+       <td>コメント<br><%= @opera.opus_explanation %></td>
+      </tr>
+      <tr><td>作品タグ<br>
+      <% @opera.tags.each.with_index(1) do |tag,i| %>
+      <%= tag.name %>
+      <%= (@opera.tags.count != i)? ',': '' %>
+      <% end %></td></tr>
      </tr>
     </table>
     <tbody>
@@ -27,7 +33,7 @@
    </div>
      <div class='col-md-3.5'>
       <% if @opera.customer_id.to_i != current_customer.id %>
-   　  <%= form_with(model: @comment, url: opu_comments_path(@customer), local: true) do |f| %>
+   　  <%= form_with(model: @comment, url: opu_comments_path(@opera), local: true) do |f| %>
       <%= f.text_field :comment, placeholder: "素敵なコメントを" %>
       <%= f.submit "送信する" %>
       <% end %>

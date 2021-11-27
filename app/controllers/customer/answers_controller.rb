@@ -12,7 +12,7 @@ class Customer::AnswersController < ApplicationController
  end
 
  def destroy
-  @answer = Answer.find(params[:id])
+  @answer = Answer.find(params[:question_id])
   @answer.destroy
   redirect_to request.referer
  end

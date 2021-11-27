@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     resource :friend, only: [:create, :destroy]
     get 'followings' => 'friends#followings', as: 'followings'
     get 'followers' => 'friends#followers', as: 'followers'
+    get "follower" => "customers#follower"
+    get "follow" => "customers#follow"
    end
    resources :calendars
   end
@@ -37,4 +39,5 @@ Rails.application.routes.draw do
   delete 'opud/:id' => 'opus#destroy'
   post 'calendars/:id' => 'calendar#show'
   delete 'opus/:opu_id/opus_image' => 'opus_images#destroy'
+
 end
