@@ -33,7 +33,7 @@ RSpec.describe "新規投稿", type: :request do
     context 'start_timeカラム' do
       it '空欄でないこと' do
         calendar.start_time = ''
-        expect(calendar).to be_invalid;
+        expect(calendar).to be_valid;
       end
     end
 

@@ -3,8 +3,8 @@
 </header>
  <div class='container px-5 px-sm-0'>
  <div class='row'>
-  <div class='col-md-3.5'>
-   <h2 class="plo_name"><%= @customer.name %>さんのプロフ</h2>
+  <div class='col-md-3'>
+   <h3 class="plo_name"><%= @customer.name %>さんの<br>プロフィール</h3>
    <%= render 'layouts/mypage'%>
   </div>
    <div class='col-md-5'>
@@ -31,23 +31,25 @@
      </tr>
      </tbody>
    </div>
-     <div class='col-md-3.5'>
+   <tfoot>
+    <div class='col-md-4'>
+     <td>
       <% if @opera.customer_id.to_i != current_customer.id %>
    　  <%= form_with(model: @comment, url: opu_comments_path(@opera), local: true) do |f| %>
       <%= f.text_field :comment, placeholder: "素敵なコメントを" %>
       <%= f.submit "送信する" %>
       <% end %>
       <% end %>
-      コメント一覧
-   　  <% @comments.each do |comment| %>
-   　  <div>
-   　    <%= @customer.name %>
-   　  </div>
-    　 <%= comment.comment %><br>
-    　 <%=link_to "削除", opu_comments_path(comment.id), method: :delete %>
+     </td>
+      <% @comments.each do |comment| %>
+   　  <tr>
+   　   <td><%= comment.comment %></td>
+   　   <td><%= @customer.name %></td>
+       <td><%=link_to "削除", opu_comments_path(comment.id), method: :delete %></td>
+   　  </tr>
    　  <% end %>
      </div>
-   　 </tr>
+   </tfoot>
   </div>
 </div>
 <footer>

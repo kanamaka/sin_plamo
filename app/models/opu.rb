@@ -8,7 +8,7 @@ class Opu < ApplicationRecord
  has_many :favorited_customer, through: :favorites, source: :customer
  validates :opus_name, presence: true, length: {in: 1..30 }, presence: { message: 'は１文字以上入力してください。' }
  validates :opus_explanation, presence: true, presence: { message: 'は１文字以上入力してください。' }
- validates :opus_images_images, presence: true, presence: { message: '画像を一つ以上選択してください。' }
+ # validates :opus_images_images, presence: true, presence: { message: '画像を一つ以上選択してください。' }
  has_many :alarm, dependent: :destroy
  has_many :tag_relationships, dependent: :destroy
  has_many :tags, through: :tag_relationships
