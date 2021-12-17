@@ -74,6 +74,7 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'simple_calendar', '~> 2.0'
 gem 'dotenv-rails'
+gem 'rails-i18n'
 group :production do
   gem 'mysql2'
 end

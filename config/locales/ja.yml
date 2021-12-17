@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      opus: 作品
+    attributes:
+      event:
+        opus_name: 作品名
+        opus_explanation: 作品説明
+        tag: タグ

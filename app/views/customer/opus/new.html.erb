@@ -8,9 +8,9 @@
   </div>
   <div>
    <% if @opus.errors.any? %>
-   <%= @opus.errors.count %>件のエラーが発生しました
+   <%= @opus.errors.count %>件のエラーが発生しました<br>
    <% @opus.errors.full_messages.each do |message| %>
-    <%= message %>
+    <%= message %><br>
    <% end %>
    <% end %>
    <%= form_with model: @opus, local:true do |f| %>
