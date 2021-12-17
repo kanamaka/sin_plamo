@@ -28,11 +28,65 @@
   width: 40%;
   height: 40%;
  }
+ 
+ .topbtn {
+  font-size: 36px;
+ }
 
- .haikei {
-  background: linear-gradient(-45deg, rgba(255, 255, 255, .4), rgba(255, 255, 255, .4)) fixed, url(https://2.bp.blogspot.com/-PalZ8Vf4gcA/XvmmEd337UI/AAAAAAAAMn8/_5OsP3iw_JoSog26MCqLATGxBXGfXpEtACLcBGAsYHQ/s1600/160.jpg) fixed;
+ .toptext {
+  font-size: 32px;
+  color: black;
+  z-index: 11;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+ }
+
+ .box {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+ }
+
+ .box .imgs {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  background-size: cover;
+
+  animation  : bgAnime 15s infinite;
+}
+
+ .box .haikei-1 {
+  background: linear-gradient(-45deg, rgba(255, 255, 255, .4), rgba(255, 255, 255, .4)) fixed, url(https://1.bp.blogspot.com/-u-x-gcGcRJo/X4bvIKcWBQI/AAAAAAAAOps/Qf-fneKbY6InzOLjfGSUz0PbkfIMYu9_gCLcBGAsYHQ/s1500/172.jpg) fixed;
   background-size: cover;
  }
+ .box .haikei-2 {
+  background: linear-gradient(-45deg, rgba(255, 255, 255, .4), rgba(255, 255, 255, .4)) fixed, url(https://3.bp.blogspot.com/-06VYjf97sPI/Xvml9qe6MvI/AAAAAAAAMn0/bv6EOOLbgks5Zs93UPgZ412XR2TvaofYwCLcBGAsYHQ/s1600/152.jpg) fixed;
+  background-size: cover;
+  animation-delay  : 5s;
+ }
+
+ .box .haikei-3 {
+  background: linear-gradient(-45deg, rgba(255, 255, 255, .4), rgba(255, 255, 255, .4)) fixed, url(https://2.bp.blogspot.com/-PalZ8Vf4gcA/XvmmEd337UI/AAAAAAAAMn8/_5OsP3iw_JoSog26MCqLATGxBXGfXpEtACLcBGAsYHQ/s1600/160.jpg) fixed;
+  background-size: cover;
+  animation-delay  : 10s;
+ }
+
+ @keyframes bgAnime {
+   0% { opacity: 0; }
+   5% { opacity: 1; }
+  25% { opacity: 1; }
+  30% { opacity: 0; }
+ 100% { opacity: 0; }
+}
+
 
  .azure {
   color: #f0ffff;

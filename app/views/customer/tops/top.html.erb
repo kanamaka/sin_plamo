@@ -1,34 +1,31 @@
 <header>
  <%= render 'layouts/header' %>
 </header>
-<div class = "container-fluid">
-<div class="haikei">
- <div class = "row">
-  <div class = "col-md-2 offset-2 mt-5">
+ <div class="box">
+  <div class="haikei-1 imgs"></div>
+  <div class="haikei-2 imgs"></div>
+  <div class="haikei-3 imgs"></div>
    <table border="2" style="border-collapse: collapse" rules="groups">
-    <div class = "col-md-8 mt-5">
-      <div style="width: 100%; margin-bottom:300px">
+    <div class = "row">
+     <div class = "col-md-2 offset-2 mt-5">
+      <div class = "col-md-8 mt-5">
+       <div style="width: 100%; margin-bottom:300px">
         <div style="width: 900px; margin:100px auto;">
-          <h2 class="tophaikei">
-            <div class="tophaikei">
-             ようこそ、sin_plamoへ
-            </div>
-            <div class="tophaikei">
-             このサイトはプラモを作るモチベが続かない。
-            </div>
-            <div class="tophaikei">
-             人たちに向けたアプリケーションです
-            </div>
-          </h2>
-          <%= link_to 'sin_plamoとは？', about_path, class: "btn  col-sm-3" %>
-          <%= link_to '簡単登録！', new_customer_registration_path, class: "btn col-sm-3"  %>
+         <h2 class="tophaikei">
+          <table border="2" style="border-collapse: collapse" rules="groups">
+           <div class="toptext">ようこそ、sin_plamoへ<br>このサイトはプラモを作るモチベが続かない。<br>人たちに向けたアプリケーションです
+           <br><%= link_to 'sin_plamoとは？', about_path, class: "btn  topbtn" %>
+           <%= link_to '簡単登録！', new_customer_registration_path, class: "btn  topbtn"  %>
+           </div>
+          </table>
+         </h2>
         </div>
-        </div>
+       </div>
       </div>
+     </div>
+    </div>
    </table>
-  </div>
  </div>
-</div>
 <footer>
  <%= render 'layouts/footer' %>
 </footer>
