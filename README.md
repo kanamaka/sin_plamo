@@ -41,3 +41,6 @@ https://docs.google.com/spreadsheets/d/1yTvAj5-Yc_NCvo-P70On4M27Sem_ur-8AbaO8RJu
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
 - IDE：Cloud9
+- 
+追加機能
+ファイル選択をしたらプレビュー

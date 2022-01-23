@@ -27,8 +27,24 @@
        <%= f.text_field :tag_ids, class: "form-control input-text form", id:'tag_ids',\
         placeholder: "作品タグをつける。複数つけるには','で区切ってください。" %>
       </p>
-     <p><%= f.file_field :opus_images_images, multiple: true %></p>
+     <p>
+      <%= f.label :image do %>
+      <%= f.file_field :opus_images_images, multiple: true %>
+      <% end %>
+     </p>
      <p><%= image_submit_tag("oputoukou.jpg") %></p>
+     <p>
+      <img id="opu_opus_images_images" style="width:40%;">
+      <script>
+       $('#post_image').on('change', function (e) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+       $("#opu_opus_images_images").attr('src', e.target.result);
+       }
+        reader.readAsDataURL(e.target.files[0]);
+       });
+      </script>
+     </p>
     </div>
    <% end %>
   </div>
